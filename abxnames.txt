@@ -1,0 +1,272 @@
+Class
+Lipopeptides
+Fluoroquinolone
+Lipoglycopeptides
+Cephalosporin
+(5th generation)
+Macrocyclics
+
+
+ß-Lactam Antibiotics
+
+Beta-lactam antibiotics include penicillins, cephalosporins, monobactams, and carbapenems.
+
+Penicillins
+
+
+Generic
+Amoxicillin
+Ampicillin
+Bacampicillin
+Carbenicillin
+Cloxacillin
+Dicloxacillin
+Flucloxacillin
+Mezlocillin
+Nafcillin
+Oxacillin
+Penicillin G
+Augmentin
+Amoxicillin-Clavulanate
+
+Penicillin V
+Piperacillin
+Pivampicillin
+Pivmecillinam
+Ticarcillin
+
+
+Cephalosporins
+
+
+Generic
+First Generation
+Cefacetrile (cephacetrile)
+Cefadroxil (cefadroxyl)
+Cefalexin (cephalexin)
+Cefaloglycin (cephaloglycin)
+Cefalonium (cephalonium)
+Cefaloridine (cephaloradine)
+Cefalotin (cephalothin)
+Cefapirin (cephapirin)
+Cefatrizine
+Cefazaflur
+Cefazedone
+Cefazolin (cephazolin)
+Cefradine (cephradine)
+Cefroxadine
+Ceftezole
+Second Generation
+Cefaclor
+Cefamandole
+Cefmetazole
+Cefonicid
+Cefotetan
+Cefoxitin
+Cefprozil (cefproxil)
+Cefuroxime
+Cefuzonam
+Third Generation
+Cefcapene
+Cefdaloxime
+Cefdinir
+Cefditoren
+Cefetamet
+Cefixime
+Cefmenoxime
+Cefodizime
+Cefotaxime
+Cefpimizole
+Cefpodoxime
+Cefteram
+Ceftibuten
+Ceftiofur
+Ceftiolene
+Ceftizoxime
+Ceftriaxone
+Cefoperazone
+Ceftazidime
+Fourth Generation
+Cefclidine
+Cefepime
+Cefluprenam
+Cefoselis
+Cefozopran
+Cefpirome
+Cefquinome
+Fifth Generation
+Ceftobiprole
+Ceftaroline
+Not Classified
+Cefaclomezine
+Cefaloram
+Cefaparole
+Cefcanel
+Cefedrolor
+Cefempidone
+Cefetrizole
+Cefivitril
+Cefmatilen
+Cefmepidium
+Cefovecin
+Cefoxazole
+Cefrotil
+Cefsumide
+Cefuracetime
+Ceftioxide
+Combinations
+Ceftazidime/Avibactam
+
+
+Monobactams
+
+
+Generic
+Aztreonam
+
+
+Carbapenems
+
+
+Generic
+Imipenem,
+Imipenem/cilastatin
+Doripenem
+Meropenem
+Ertapenem
+
+
+Macrolide Antibiotics
+
+
+Generic
+Azithromycin
+Erythromycin
+Clarithromycin
+Dirithromycin
+Roxithromycin
+Ketolides
+Telithromycin
+
+
+Lincosamides
+
+
+Generic
+Clindamycin
+Lincomycin
+
+
+
+
+Streptogramins
+
+
+Generic
+Pristinamycin
+Quinupristin/dalfopristin
+
+
+Aminoglycoside Antibiotics
+
+
+Generic
+Amikacin
+Gentamicin
+Kanamycin
+Neomycin
+Netilmicin
+Paromomycin
+Streptomycin
+Tobramycin
+
+
+Quinolone Antibiotics
+
+
+Generic
+First Generation
+Flumequine
+Nalidixic acid
+Oxolinic acid
+Piromidic acid
+Pipemidic acid
+Rosoxacin
+Second Generation
+Ciprofloxacin
+Enoxacin
+Lomefloxacin
+Nadifloxacin
+Norfloxacin
+Ofloxacin
+Pefloxacin
+Rufloxacin
+Third Generation
+Balofloxacin
+Gatifloxacin
+Grepafloxacin
+Levofloxacin
+Moxifloxacin
+Pazufloxacin
+Sparfloxacin
+Temafloxacin
+Tosufloxacin
+Fourth Generation
+Besifloxacin
+Clinafloxacin
+Gemifloxacin
+Sitafloxacin
+Trovafloxacin
+Prulifloxacin
+
+
+Sulfonamides
+
+
+Generic
+Sulfamethizole
+Sulfamethoxazole
+Sulfisoxazole
+Trimethoprim-Sulfamethoxazole
+
+
+Tetracycline Antibiotics
+
+
+Generic
+Demeclocycline
+Doxycycline
+Minocycline
+Oxytetracycline
+Tetracycline
+Glycylcyclines
+Tigecycline
+
+
+Other Antibiotics
+
+
+Generic
+Chloramphenicol
+Metronidazole
+Tinidazole
+Nitrofurantoin
+Glycopeptides
+Vancomycin
+Teicoplanin
+Lipoglycopeptides
+Telavancin
+Oxazolidinones
+Linezolid
+Cycloserine 2
+Rifamycins
+Rifampin
+Rifabutin
+Rifapentine
+Rifalazil
+Polypeptides
+Bacitracin
+Polymyxin B
+Tuberactinomycins
+Viomycin
+Capreomycin
