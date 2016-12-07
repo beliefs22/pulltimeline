@@ -1,6 +1,8 @@
 from shutil import copy
 
 import os
+
+
 def deletePHI(ids, subject_files_dir, cleaned_files_dir, completed_files_dir):
     """Removes files containing PHI and saves de-identified source document
     Args:
@@ -12,14 +14,14 @@ def deletePHI(ids, subject_files_dir, cleaned_files_dir, completed_files_dir):
     sep = os.sep
     current_subject_files = os.listdir(subject_files_dir)
     current_cleaned_files = os.listdir(cleaned_files_dir)
-    #Remove PDFs and Text Files
+    # Remove PDFs and Text Files
     for subject_file in current_subject_files:
         for subject_id in ids:
             if subject_file.find(subject_id) != -1:
                 print("removing {}".format(subject_file))
-                #remove pdfs and text documents
+                # remove pdfs and text documents
                 os.remove(subject_files_dir + sep + subject_file)
-    #Remove databases but keep text databases were created from
+    # Remove databases but keep text databases were created from
     for cleaned_file in current_cleaned_files:
         for subject_id in ids:
             if cleaned_file.find(subject_id) != -1 and cleaned_file.find(".db") != -1:

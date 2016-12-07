@@ -49,7 +49,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             data_to_write = collections.OrderedDict()
             visit_num_pat = re.compile(r'(ED)(\d)')
             visit_match = visit_num_pat.search(subject_file)
-            if visit_match != None:
+            if visit_match is not None:
                 visit_num = visit_match.group(2)
             else:
                 print("No visit type found for subject {}".format(subject_file))
@@ -73,7 +73,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     'ps_edchrev' + visit_num + "_" + 'arrived']] = arrival_info[0]
             data_to_write['Arrival Time'] = arrival_info[1]
             if len(arrival_info[1]) == 8:
-                arrival_info[1] = arrival_inf[1][:5]
+                arrival_info[1] = arrival_info[1][:5]
             data_to_write_csv[
                 header_locations[
                     'ps_edchrev' + visit_num + "_" + 'arrivet']] = arrival_info[1]
@@ -152,28 +152,28 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             data_to_write_csv[
                 header_locations['ps_edchrev' + visit_num + "_" + 'o2s']] = "999"
 
-            if vital_info != None:
-                if vital_info[2] != None:
+            if vital_info is not None:
+                if vital_info[2] is not None:
                     data_to_write['Temperature'] = vital_info[2]
                     data_to_write_csv[
                         header_locations[
                             'ps_edchrev' + visit_num + "_" + 'temp']] = vital_info[2]
-                if vital_info[3] != None:
+                if vital_info[3] is not None:
                     data_to_write['Pulse'] = vital_info[3]
                     data_to_write_csv[
                         header_locations[
                             'ps_edchrev' + visit_num + "_" + 'pulse']] = vital_info[3]
-                if vital_info[4] != None:
+                if vital_info[4] is not None:
                     data_to_write['Respiratory Rate'] = vital_info[4]
                     data_to_write_csv[
                         header_locations[
                             'ps_edchrev' + visit_num + "_" + 'rr']] = vital_info[4]
-                if vital_info[1] != None:
+                if vital_info[1] is not None:
                     sbp = vital_info[1].split("/")[0]
                     data_to_write['Systolic Blood Pressure'] = sbp
                     data_to_write_csv[
                         header_locations['ps_edchrev' + visit_num + "_" + 'sbp']] = sbp
-                if vital_info[5] != None:
+                if vital_info[5] is not None:
                     data_to_write['Oxygen Saturation'] = vital_info[5]
                     data_to_write_csv[
                         header_locations[
@@ -194,12 +194,12 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             final_rate = 0
             for item in oxygen_info:
                 # there is a o2 device present
-                if item[0] != None:
+                if item[0] is not None:
                     possible_route = route.get(item[0], None)
                     if possible_route and \
                                     int(possible_route) > int(route.get(final_route)):
                         final_route = item[0]
-                if item[1] != None:
+                if item[1] is not None:
                     if int(item[1]) >= final_rate:
                         final_rate = item[1]
             if final_route == "None":
@@ -260,7 +260,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     ''')
             data = cur.fetchone()
             gcs = "No Score In Timeline"
-            if data != None:
+            if data is not None:
                 if int(data[0]) <= gcs:
                     gcs = data[0]
                     data_to_write['GCS Score'] = str(gcs)
@@ -282,9 +282,9 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             ph = "999"
             if data != []:
                 for item in data:
-                    if item[0] != None:
+                    if item[0] is not None:
                         ph = item[0]
-                    if item[1] != None:
+                    if item[1] is not None:
                         ph = item[1]
             data_to_write['pH'] = ph
             data_to_write_csv[
@@ -299,12 +299,12 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             glucose = "999"
             bun = "999"
             data = cur.fetchone()
-            if data != None:
-                if data[0] != None:
+            if data is not None:
+                if data[0] is not None:
                     sodium = data[0]
-                if data[1] != None:
+                if data[1] is not None:
                     glucose = data[1]
-                if data[2] != None:
+                if data[2] is not None:
                     bun = data[2]
             data_to_write['Sodium'] = sodium
             data_to_write['Glucose'] = glucose
@@ -323,8 +323,8 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     ''')
             hematocrit = "999"
             data = cur.fetchone()
-            if data != None:
-                if data[0] != None:
+            if data is not None:
+                if data[0] is not None:
                     hematocrit = data[0]
             data_to_write['Hematocrit'] = hematocrit
             data_to_write_csv[
@@ -475,7 +475,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     FROM xpert
                     ''')
             data = cur.fetchone()
-            if data != None:
+            if data is not None:
                 nat_testing = True
                 # other viruses were tested
                 data_to_write_csv[
