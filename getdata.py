@@ -7,6 +7,7 @@ from importtoredcap import importToRedcap
 from deletephi import deletePHI
 from cleanfiles import cleanFiles
 
+
 def getData():
     directories = getDirectories()
     clean_dir = directories['Clean Dir']
@@ -17,7 +18,7 @@ def getData():
     source_dir = directories['Source Dir']
     print(directories)
 
-    #Create copy of import file
+    # Create copy of import file
     sep = os.sep
     copy_file_name = 'CEIRS_ACTIVE_IMPORT_FILE' + \
                      str(datetime.now().date()).replace("-", "_") + \
@@ -30,12 +31,11 @@ def getData():
 
     current_files = os.listdir(subject_dir)
     print(current_files)
-    cleanFiles(clean_dir,subject_dir)
+    cleanFiles(clean_dir, subject_dir)
     ids = getIds(clean_dir)
     print(ids)
-    pullDataFromCleanedFiles(ids, clean_dir,logfile)
-    createSourceFromData(ids, clean_dir,source_dir,import_dir,logfile)
-    deletePHI(ids, subject_dir,clean_dir,completed_dir)
+    pullDataFromCleanedFiles(ids, clean_dir, logfile)
+    createSourceFromData(ids, clean_dir, source_dir, import_dir, logfile)
+    deletePHI(ids, subject_dir, clean_dir, completed_dir)
     importToRedcap(import_dir)
     print("All done, and it didn't fail yay")
-

@@ -1,7 +1,8 @@
 import sqlite3
-import os
+
 
 def makeTable(subject_file):
+    """Creates a database for the given subject"""
     print("Creating database for file {}".format(subject_file))
     conn = sqlite3.connect(subject_file.replace(".txt",".db"))
     cur = conn.cursor()

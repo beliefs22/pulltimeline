@@ -2,6 +2,7 @@ import re
 import logging
 from datetime import datetime
 
+
 def makeNumPattern(word):
     """Helper function to create patterns used to find results.
     Args:
@@ -10,6 +11,7 @@ def makeNumPattern(word):
     #re structure finds - White Blood Count: 3.78/37/Thirtyseven
     template = r"(%s:\s*)(\d+\W{0,1}\d*)|(%s:\s+$)|(%s:\s*)([\(\w\s\)]+)"
     return re.compile(template % (word, word, word),re.M)
+
 
 def makeSearchPattern(word):
     """Helper function to make patterns used tostart result search
@@ -20,6 +22,7 @@ def makeSearchPattern(word):
     template = r"(\d+:\d+:*\d*\s*)(%s)"
     return re.compile(template % (word,),re.M)
 
+
 def makeStringPattern(word):
     """Helper function to create patterns used to find string results
 
@@ -29,6 +32,7 @@ def makeStringPattern(word):
     #re structure finds - Influenza A NAT: No Detected
     template = r"(%s:\s*)([\w\s]+)"
     return re.compile(template % (word,),re.M)
+
 
 class InsertData(object):
     """Base Class for inserting data into the databse created for each subject
@@ -43,7 +47,7 @@ class InsertData(object):
         data (list): lines from text file containing subject information
     """
         
-    def __init__(self,conn,data,logfilename):
+    def __init__(self, conn, data, logfilename):
         
         #connection to the database for a unique subject
         self.connection = conn
@@ -102,6 +106,7 @@ class InsertData(object):
         self.cursor.execute(template,(value, row_id))
         self.connection.commit()
 
+
 class InsertOtherData(InsertData):
     """Base class for inserting non lab value results like vitals"""
 
@@ -121,7 +126,7 @@ class InsertOtherData(InsertData):
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
                 #found a word - start search
-                if startmatch != None:
+                if startmatch is not None:
                     #uniqe timepoint for the entry
                     row_id = startmatch.group(1) + "-" + str(count)
                     count += 1
@@ -133,7 +138,7 @@ class InsertOtherData(InsertData):
                         for pattern2 in self.resultpatterns:
                             resultmatch = pattern2.search(line)
                             #determine which match group the pattern found
-                            if resultmatch != None:
+                            if resultmatch is not None:
                                 #Temp: 37.4
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
@@ -154,7 +159,7 @@ class InsertOtherData(InsertData):
                                         next_line = data.next()
                                         new_line = True
                                     valuesearch = valuept.search(next_line)
-                                    if valuesearch != None:
+                                    if valuesearch is not None:
                                         value = valuesearch.group(1).strip()
                                         self.update_row(field_name,value,row_id)
                                 elif resultmatch.group(4) and\
@@ -169,7 +174,8 @@ class InsertOtherData(InsertData):
                             line = data.next()
                         else:
                             line = next_line
-                            
+
+
 class Medications(InsertData):
     """Inserts Medications Given during stay"""
     def __init__(self, conn, data, logfilename):
@@ -200,12 +206,12 @@ class Medications(InsertData):
             for pattern in self.startpatterns:                
                 startmatch = pattern.search(line)
                 #found a word - start search
-                if startmatch != None:
+                if startmatch is not None:
                     #uniqe timepoint for the entry
                     row_id = startmatch.group(1).strip() + "-" + str(count)
                     count += 1
                     self.create_row(row_id)
-                if row_id != None:
+                if row_id is not None:
                     med_result_pattern = re.compile(
                         r'(Medication Given)(.*?)(Dose:)|\
 (Medication Given)(.*?)(Route:)|(Medication New)(.*?)(Dose:)|\
@@ -215,35 +221,35 @@ class Medications(InsertData):
                         line = data.next()
                     results = med_result_pattern.search(line)
                     
-                    if results != None:
+                    if results is not None:
                         #Lines = "Medication given ..... Dose:
-                        if results.group(1) != None and\
-                           results.group(2) != None and\
-                           results.group(3) != None:
+                        if results.group(1) is not None and \
+                                        results.group(2) is not None and \
+                                        results.group(3) is not None:
                             field = 'name'
                             value = results.group(2).lower() +\
                                     previous_line.lower()
                             self.update_row(field, value.strip(), row_id)
                         #Lines = "Medication given ..... Route:
-                        if results.group(4) != None and\
-                           results.group(5) != None and\
-                           results.group(6) != None:
+                        if results.group(4) is not None and \
+                                        results.group(5) is not None and \
+                                        results.group(6) is not None:
                             field = 'name'
                             value = results.group(5).lower() +\
                                     previous_line.lower()
                             self.update_row(field, value.strip(), row_id)
                         #Lines = "Medication New ..... Dose:
-                        if results.group(7) != None and\
-                           results.group(8) != None and\
-                           results.group(9) != None:
+                        if results.group(7) is not None and \
+                                        results.group(8) is not None and \
+                                        results.group(9) is not None:
                             field = 'name'
                             value = results.group(8).lower() +\
                                     previous_line.lower()
                             self.update_row(field, value.strip(), row_id)
                         #Lines = "Medication New ..... Dose:
-                        if results.group(10) != None and\
-                           results.group(11) != None and\
-                           results.group(12) != None:
+                        if results.group(10) is not None and \
+                                        results.group(11) is not None and \
+                                        results.group(12) is not None:
                             field = 'name'
                             value = results.group(11).lower() +\
                                     previous_line.lower()
@@ -253,15 +259,15 @@ class Medications(InsertData):
                         med_result_pattern = re.compile(
                             r'(\A.*?)(Dose:)|(\A.*?)(Route:)')
                         results = med_result_pattern.search(line)
-                        if results != None:
-                            if results.group(1) != None and\
-                               results.group(2) != None:
+                        if results is not None:
+                            if results.group(1) is not None and \
+                                            results.group(2) is not None:
                                 field = 'name'
                                 value = results.group(1).lower() +\
                                         previous_line.lower()
                                 self.update_row(field, value.strip(), row_id)
-                            if results.group(3) != None and\
-                               results.group(4) != None:
+                            if results.group(3) is not None and \
+                                            results.group(4) is not None:
                                 field = 'name'
                                 value = results.group(3).lower() +\
                                         previous_line.lower()
@@ -286,7 +292,7 @@ class InsertLabData(InsertData):
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
                 #found a word - start search
-                if startmatch != None:
+                if startmatch is not None:
                     #container for results to add once you identify row_id
                     toadd = []
                     #Pulls row_id when you see the collected key word
@@ -295,7 +301,7 @@ class InsertLabData(InsertData):
                     if line.find(self.stop_word) != -1:
                         for pattern2 in self.resultpatterns:
                             resultmatch = pattern2.search(line)
-                            if resultmatch != None:
+                            if resultmatch is not None:
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
                                     toadd.append((resultmatch.group(1),
@@ -306,7 +312,7 @@ class InsertLabData(InsertData):
                             for pattern2 in self.resultpatterns:
                                 resultmatch = pattern2.search(line)
                                 #White Blood Count: 3.78
-                                if resultmatch != None:
+                                if resultmatch is not None:
                                     if resultmatch.group(1) and\
                                        resultmatch.group(2):
                                         toadd.append((resultmatch.group(1),
@@ -316,7 +322,7 @@ class InsertLabData(InsertData):
                             line = data.next()
                         for pattern3 in self.resultpatterns:
                             resultmatch = pattern3.search(line)
-                            if resultmatch != None:
+                            if resultmatch is not None:
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
                                     toadd.append((resultmatch.group(1),
@@ -327,14 +333,14 @@ class InsertLabData(InsertData):
                         result_time_pattern= re.compile(
                             r'(Last updated:\s*)(\d+/\d+/\d+\s*\d+:\d+)')
                         result_time_match = result_time_pattern.search(line)
-                        if result_time_match != None:
+                        if result_time_match is not None:
                             result_time = result_time_match.group(2)
                             toadd.append(('result_time', result_time))
                         else:
                             #move to the next lien to find stop word
                             line = data.next()
                             result_time_match = result_time_pattern.search(line)
-                            if result_time_match != None:
+                            if result_time_match is not None:
                                 result_time = result_time_match.group(2)
                                 toadd.append(('result_time', result_time))                               
                         #Found stop keyword and row_id
@@ -345,7 +351,8 @@ class InsertLabData(InsertData):
                         for field, value in toadd:
                             self.update_row(field, value, row_id)
         logging.debug("finished lab insert")
-        
+
+
 class Vitals(InsertOtherData):
     """Insert Data from Vital Sign Assessements"""
 
@@ -360,7 +367,8 @@ class Vitals(InsertOtherData):
                                for word in ['Vitals']]
         self.stop_word = 'Custom Formula'
         self.tablename = 'vitals'
-        
+
+
 class Cbc(InsertLabData):
     """Insert data from CBC labs"""
 
@@ -374,6 +382,7 @@ class Cbc(InsertLabData):
                                for word in ['White Blood Cell Count']]        
         self.stop_word = 'Collected'
         self.tablename = 'cbc'
+
 
 class Cmp(InsertLabData):
     """Insert Data from CMP lab test"""
@@ -392,6 +401,7 @@ class Cmp(InsertLabData):
         self.stop_word = 'Collected'
         self.tablename = 'cmp'
 
+
 class BloodGas(InsertLabData):
     """Insert Data from Blood Gas Lab test"""
     def __init__(self, conn, data, logfilename):
@@ -405,7 +415,8 @@ class BloodGas(InsertLabData):
                               for word in ['Blood Gases']]
         self.stop_word = 'Collected'
         self.tablename = 'bloodgas'
-        
+
+
 class Influenza(InsertLabData):
     """Inserts data on Influenza Testing"""
     def __init__(self, conn, data, logfilename):
@@ -417,6 +428,7 @@ class Influenza(InsertLabData):
                                             'Influenza B NAT','RSV NAT']]
         self.stop_word = 'Collected'
         self.tablename = 'influenza'
+
 
 class Disposition(InsertData):
     """Inserts Data on Subjects Final disposition"""
@@ -481,6 +493,7 @@ class Disposition(InsertData):
 
         self.connection.commit()
 
+
 class Assessment(InsertData):
     """Inserts Data on subjects Assessment"""
     def __init__(self, conn, data, logfilename):
@@ -500,7 +513,7 @@ class Assessment(InsertData):
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
                 #skips braden assessments
-                if startmatch != None and line.find('Braden') == -1:
+                if startmatch is not None and line.find('Braden') == -1:
                     try:
                         row_id = startmatch.group(1) + "-" + str(count)
                         count += 1
@@ -509,7 +522,7 @@ class Assessment(InsertData):
                             line = data.next()
                         for pattern2 in self.resultpatterns:
                             resultmatch = pattern2.search(line)
-                            if resultmatch != None:
+                            if resultmatch is not None:
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
                                     field_name = resultmatch.group(1)
@@ -517,7 +530,8 @@ class Assessment(InsertData):
                                     self.update_row(field_name,result,row_id)
                     except StopIteration:
                         return
-                                
+
+
 class InsertDataWithoutResults(InsertData):
     """Base class for inserting data that doesn't have results"""
     def __init__(self, conn, data, logfilename):
@@ -536,6 +550,7 @@ class InsertDataWithoutResults(InsertData):
             "Created row in table %s with id %s" % (self.tablename, row_id))
         self.connection.commit()
 
+
 class Imaging(InsertDataWithoutResults):
     """Inserts Imaging Data"""
     def __init__(self, conn, data, logfilename):
@@ -550,11 +565,12 @@ class Imaging(InsertDataWithoutResults):
         for line in data:
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
-                if startmatch != None:
+                if startmatch is not None:
                     if startmatch.group(1) and startmatch.group(2):
                         time = startmatch.group(1)
                         imagetype = startmatch.group(2)
                         self.create_row(time, imagetype)
+
 
 class Cultures(InsertDataWithoutResults):
     def __init__(self, conn, data, logfilename):
@@ -570,16 +586,17 @@ class Cultures(InsertDataWithoutResults):
         for line in data:
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
-                if startmatch != None:
+                if startmatch is not None:
                     if startmatch.group(1) and startmatch.group(2):
                         row_id = startmatch.group(1) + "-" + str(count)
                         count += 1
                         type_pattern = re.compile(
                             r'(\d+:\d+:*\d*\s*)(Culture Order)(.*$)')
                         type_search = type_pattern.search(line)
-                        if type_search != None:
+                        if type_search is not None:
                             culture_type = type_search.group(3)
                             self.create_row(row_id,culture_type)
+
 
 class RespVirus(InsertDataWithoutResults):
     def __init__(self, conn, data, logfilename):
@@ -595,10 +612,11 @@ class RespVirus(InsertDataWithoutResults):
         for line in data:
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
-                if startmatch != None:
+                if startmatch is not None:
                     row_id = startmatch.group(1) + "-" + str(count)
                     count += 1
                     self.create_row(row_id,'Resp Virus')
+
 
 class Xpert(InsertDataWithoutResults):
     def __init__(self, conn, data, logfilename):
@@ -615,7 +633,7 @@ class Xpert(InsertDataWithoutResults):
             line = line.replace("  "," ")
             for pattern in self.startpatterns:
                 startmatch = pattern.search(line)
-                if startmatch != None:
+                if startmatch is not None:
                     row_id = startmatch.group(1) + "-" + str(count)
                     count += 1
                     self.create_row(row_id,'Xpert Flu')

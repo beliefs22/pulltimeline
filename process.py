@@ -1,7 +1,8 @@
 import os
 import re
-import sqlite3
+
 from maketables import makeTable
+
 
 def getDirectories():
     """Returns directories where various files are located or saved to"""
@@ -13,14 +14,15 @@ def getDirectories():
     log_dir = os.getcwd() + sep + 'Logs'
     source_dir = 'I:\Research\CEIRS\Year 3\Active Surveillance\Source \
 Documents for Chart Reviews'
-    directories = {'Subject Dir' : subject_files_dir,
-                   'Clean Dir' : cleaned_files_dir,
-                   'Import Dir' : import_files_dir,
-                   'Complete Dir' : completed_files_dir,
-                   'Log Dir' : log_dir,
-                   'Source Dir' : source_dir
+    directories = {'Subject Dir': subject_files_dir,
+                   'Clean Dir': cleaned_files_dir,
+                   'Import Dir': import_files_dir,
+                   'Complete Dir': completed_files_dir,
+                   'Log Dir': log_dir,
+                   'Source Dir': source_dir
                    }
     return directories
+
 
 def getIds(cleaned_files_dir):
     """Returns list of subject ids to test based on files in cleaned files directory"""
@@ -29,7 +31,7 @@ def getIds(cleaned_files_dir):
     ids = set()
     for file_name in current_files:
         id_search = id_pat.search(file_name)
-        if id_search != None:
+        if id_search is not None:
             file_id = id_search.group(2)
             ids.add(file_id)
         else:
@@ -47,7 +49,7 @@ def pullDataFromCleanedFiles(ids, cleaned_files_dir, logfile):
     from insertdata import Vitals, Cbc, Cmp, Medications, Influenza, Assessment
     from insertdata import BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging
     sep = os.sep
-    add_dir = lambda directory, filename: directory + sep + filename    
+    add_dir = lambda directory, filename: directory + sep + filename
     current_files = os.listdir(cleaned_files_dir)
     information_types = [Vitals, Cbc, Cmp, Medications, Influenza, Assessment,
                          BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging]
@@ -63,7 +65,7 @@ def pullDataFromCleanedFiles(ids, cleaned_files_dir, logfile):
             conn = makeTable(filename)
             print("Starting data extractions for {}".format(filename))
             for information_type in information_types:
-                with open(filename,'rb') as subject_file:
-                    data_extractor = information_type(conn, subject_file,logfile)
+                with open(filename, 'rb') as subject_file:
+                    data_extractor = information_type(conn, subject_file, logfile)
                     data_extractor.extractData()
             print("Finished data extraction for {}".format(filename))
