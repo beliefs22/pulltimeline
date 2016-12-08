@@ -119,10 +119,14 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
 
             data_to_write_csv[
                 header_locations['redcap_data_access_group']] = 'jhhs'
+
+            possible_visit_num = int(data_to_write_csv[
+                                         header_locations['edptchart_visitnumber']]) + 1
+
+            if possible_visit_num < int(visit_num):
+                possible_visit_num = str(visit_num)
             data_to_write_csv[
-                header_locations[
-                    'edptchart_visitnumber']] = str(int(data_to_write_csv[
-                header_locations['edptchart_visitnumber']]) + 1)
+                header_locations['edptchart_visitnumber']] = possible_visit_num
             data_to_write_csv[
                 header_locations['edchartrev_visit' + visit_num]] = arrival_info[0]
             data_to_write_csv[
@@ -135,14 +139,14 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     ''')
 
             vital_info = cur.fetchone()
-            data_to_write['Temperature'] = "999"
+            data_to_write['Temperature'] = "999.9"
             data_to_write['Pulse'] = "999"
             data_to_write['Respiratory Rate'] = "999"
             data_to_write['Systolic Blood Pressure'] = "999"
             data_to_write['Oxygen Saturation'] = "999"
 
             data_to_write_csv[
-                header_locations['ps_edchrev' + visit_num + "_" + 'temp']] = "999"
+                header_locations['ps_edchrev' + visit_num + "_" + 'temp']] = "999.9"
             data_to_write_csv[
                 header_locations['ps_edchrev' + visit_num + "_" + 'pulse']] = "999"
             data_to_write_csv[
