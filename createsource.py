@@ -6,7 +6,8 @@ import csv
 from datetime import datetime
 import re
 
-def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_dir,  logfile):
+
+def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_dir, logfile):
     """Creates Source document and CSV to Import Records to Redcap
 
     Args:
@@ -20,9 +21,9 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
     visit_num_pat = re.compile(r'(ED)(\d)')
     current_files = os.listdir(cleaned_files_dir)
     export_file_name = import_files_dir + os.sep + 'CEIRS_ACTIVE_IMPORT_FILE' + \
-        str(datetime.now().date()).replace("-","_") + ".csv"
+                       str(datetime.now().date()).replace("-", "_") + ".csv"
 
-    #Prep file for importing all records to redcap
+    # Prep file for importing all records to redcap
     importfile = open(export_file_name, 'ab+')
     csv_reader = csv.reader(importfile)
     csv_writer = csv.writer(importfile)
@@ -32,7 +33,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                         for index, header in enumerate(headers)
                         }
 
-    #Create source document for Indivisual visit and collect data to append to import file for each ID
+    # Create source document for Indivisual visit and collect data to append to import file for each ID
     for subject_id in ids:
         # Container for data to write to importfile once all files are processed
         data_to_write_csv = [""] * len(headers)
@@ -53,8 +54,8 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 visit_num = visit_match.group(2)
             else:
                 print("No visit type found for subject {}".format(subject_file))
-            #Create file for Souce Document Output
-            outfile = open(source_files_dir + sep + subject_file.replace("_clean.db",".txt"), "w")
+            # Create file for Souce Document Output
+            outfile = open(source_files_dir + sep + subject_file.replace("_clean.db", ".txt"), "w")
             # Study ID
             study_id = "01-11-A-{}".format(subject_id)
             data_to_write['Study ID'] = study_id
@@ -103,11 +104,12 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     obs = False
                     print("disposition points", data)
                     for item in data:
-                        print("item is", item[0], len(item[0]), item[0]=='observation', item[0] == u'observation', item[0].strip() == 'observation')
+                        print("item is", item[0], len(item[0]), item[0] == 'observation', item[0] == u'observation',
+                              item[0].strip() == 'observation')
                         if item[0] == 'observation':
                             obs = True
                     if obs:
-                        print(study_id,"was placed in obs and discharged")
+                        print(study_id, "was placed in obs and discharged")
                         data_to_write_csv[
                             header_locations[
                                 'ps_edchrev' + visit_num + "_" + 'dispoobs']] = "1"
@@ -699,17 +701,17 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             # move back to proper place for appending data after reading data
             outfile.close()
             print "finish writing data for %s ED Visit: %s" % (subject_file, visit_num)
-        #Write row for Subject to Importing File
+        # Write row for Subject to Importing File
         importfile.seek(0, 2)
         csv_writer.writerow(data_to_write_csv)
         print("Finished writing data to import file for subject {}".format(subject_id))
     importfile.close()
     print("Finished writeing source documents and import files")
 
+
 def main():
     pass
 
+
 if __name__ == "__main__":
     main()
-     
-    
