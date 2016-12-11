@@ -14,12 +14,14 @@ def getDirectories():
     log_dir = os.getcwd() + sep + 'Logs'
     source_dir = 'I:\Research\CEIRS\Year 3\Active Surveillance\Source \
 Documents for Chart Reviews'
+    ip_subject_files_dir = os.getcwd() + sep + 'Ip_Subject_Files'
     directories = {'Subject Dir': subject_files_dir,
                    'Clean Dir': cleaned_files_dir,
                    'Import Dir': import_files_dir,
                    'Complete Dir': completed_files_dir,
                    'Log Dir': log_dir,
-                   'Source Dir': source_dir
+                   'Source Dir': source_dir,
+                   'IP Subject Dir' : ip_subject_files_dir
                    }
     return directories
 
