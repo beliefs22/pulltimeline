@@ -206,8 +206,13 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                                     int(possible_route) > int(route.get(final_route)):
                         final_route = item[0]
                 if item[1] is not None:
-                    if int(item[1]) >= final_rate:
-                        final_rate = item[1]
+                    possible_rate = item[1]
+                    try:
+                        if int(possible_rate) >= final_rate:
+                            final_rate = item[1]
+                    except ValueError:
+                        if float(possible_rate) >= final_rate:
+                            final_rate = item[1]
             if final_route == "None":
                 oxygen_type = "None Given"
                 oxygen_rate = "N/A"
