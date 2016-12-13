@@ -1,1 +1,1 @@
-import getdata
+import getdata, getipdata

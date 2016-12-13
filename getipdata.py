@@ -9,12 +9,14 @@ def getVitals(subject_files_dir):
                      for subject_file in current_files
                      if subject_file.find("IP") != -1
                      if subject_file.find("Vitals") != -1
+                     if subject_file.find(".txt") != -1
                      ]
     print("Vitals Files are", subject_files)
     vitalpatterns = ['Temperature', 'Heart Rate', 'BP (cuff)', 'GCS', 'SpO2',
                      'O2 Device']
 
     for item in subject_files:
+        item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
             for line in thefile:
                 for pat in vitalpatterns:
@@ -41,9 +43,11 @@ def getLabs(subject_files_dir):
                      for subject_file in current_files
                      if subject_file.find("IP") != -1
                      if subject_file.find("Labs") != -1
+                     if subject_file.find(".txt") != -1
                      ]
     print("Lab Files are", subject_files)
     for item in subject_files:
+        item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
             testfile = iter(list(thefile))
             datapoints = defaultdict(dict)
@@ -78,9 +82,11 @@ def getMeds(subject_files_dir):
                      for subject_file in current_files
                      if subject_file.find("IP") != -1
                      if subject_file.find("Medications") != -1
+                     if subject_file.find(".txt") != -1
                      ]
     print("Med Files are", subject_files)
     for item in subject_files:
+        item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
             testfile = iter(list(thefile))
             datapoints = defaultdict(dict)
