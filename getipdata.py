@@ -1,7 +1,12 @@
 from collections import defaultdict
 import os
 import process
+import re
 
+
+def makePattern(pattern):
+    template = r'({pattern}[ \n]+)(.*?)({pattern}[ \n]+)'.format(pattern=pattern)
+    return re.compile(template,flags=re.IGNORECASE | re.DOTALL )
 
 def getVitals(subject_files_dir):
     current_files = os.listdir(subject_files_dir)
@@ -12,32 +17,53 @@ def getVitals(subject_files_dir):
                      if subject_file.find(".txt") != -1
                      ]
     print("Vitals Files are", subject_files)
-    vitalpatterns = ['Temperature', 'Heart Rate', 'BP (cuff)', 'GCS', 'SpO2',
-                     'O2 Device']
-
+    search_words = ['Temperature', 'Heart Rate', 'BP \(cuff\)', 'GCS', 'SpO2',
+                     'O2 Device', r'O2 Flow Rate \(L/min\)'
+                    ]
+    search_patterns = [makePattern(word)
+                       for word in search_words
+                       ]
     for item in subject_files:
         item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
-            for line in thefile:
-                for pat in vitalpatterns:
-                    if line.find(pat) != -1:
-                        if pat == "BP (cuff)":
-                            print pat
-                            data = line.split()
-                            data = [item
-                                    for item in data
-                                    if item.split("/")[0].isdigit()]
-                            print data
-                        else:
-                            print pat
-                            data = line.split()
-                            data = [item
-                                    for item in data
-                                    if item.replace(".", "").isdigit()]
-                            print data
+            print("starting vitals search for {}".format(item))
+            data = thefile.read()
+            datapoints = defaultdict(dict)
+            for pattern in search_patterns:
+                result_match = pattern.search(data)
+                if result_match is not None:
+                    vital_type = result_match.group(1)
+                    vital_result = result_match.group(2)
+                    datapoints[vital_type] = vital_result
+
+            for key, value in datapoints.iteritems():
+                values = value.split("\n")
+                values = [value
+                          for value in values
+                          if value.strip() != ""
+                          if value.find("2016") == -1
+                          if value.find("Page") == -1
+                          if value.find("blank") == -1
+                          ]
+                print("Key: {}".format(key))
+                print("Value: {}".format(values))
+                print "__________________________________________"
+                print
+
 
 
 def getLabs(subject_files_dir):
+    search_words = ['White Blood Cell Count', 'Urea Nitrogen','Sodium', 'Glucose',
+                    'Hematocrit','Bacterial Culture/Smear, Respiratory', 'Gram Stain',
+                    'Viral Culture, Respiratory','Influenza A NAT', 'Influenza B NAT',
+                    'Parainfluenza 1 NAT','Parainfluenza 2 NAT', 'Parainfluenza 3 NAT',
+                    'RSV NAT', 'Resp Virus Complex, NP Swab', 'Adenovirus NAT',
+                    'Metapneumovirus NAT', 'pH, Non-Arterial', 'pH, Arterial'
+                    ]
+    search_patterns = [makePattern(word)
+                       for word in search_words
+                       ]
+
     current_files = os.listdir(subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
@@ -49,34 +75,41 @@ def getLabs(subject_files_dir):
     for item in subject_files:
         item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
-            testfile = iter(list(thefile))
+            print("starting lab search for {}".format(item))
+            data = thefile.read()
             datapoints = defaultdict(dict)
-            line = testfile.next().strip()
-            while line != "CBC":
-                line = testfile.next().strip()
-            header = line
-            for line in testfile:
-                line = line.strip()
-                if line == "":
-                    continue
-                possible_lab_start = line
-                possible_value = testfile.next().strip()
-                possible_lab_end = testfile.next().strip()
-
-                if possible_value == "" and possible_lab_end == "":
-                    header = possible_lab_start
-                    continue
-                if possible_lab_start == possible_lab_end:
-                    datapoints[header][possible_lab_start] = possible_value
+            for pattern in search_patterns:
+                result_match = pattern.search(data)
+                if result_match is not None:
+                    lab_type = result_match.group(1)
+                    lab_result = result_match.group(2)
+                    datapoints[lab_type] = lab_result
 
             for key, value in datapoints.iteritems():
-                print key
-                print value
+                values = value.split("\n")
+                values = [value
+                          for value in values
+                          if value.strip() != ""
+                          if value.find("2016") == -1
+                          if value.find("Page") == -1
+                          if value.find("blank") == -1
+                          ]
+                print("Key: {}".format(key))
+                print("Value: {}".format(values))
                 print "__________________________________________"
                 print
 
 
 def getMeds(subject_files_dir):
+    import getcommonnames
+    antibiotics = getcommonnames.getAbxNames()
+    antivirals = getcommonnames.getAntiviralNames()
+
+    med_pattern = re.compile(r'^([a-z]+.*?\n)(Dose:.*?\n)(Last Dose:.*\n){0,1}(Start: .*? End: .*?$)', flags= re.I | re.M)
+    #pattern to remove words that are added when you save document
+    patterns_to_remove = [r'(Page.*?$)', r'(about:blank)', r'^(\d{1,2}/\d{1,2}/\d{4})']
+    patterns_to_remove = [re.compile(pattern, flags= re.I | re.M)
+                          for pattern in patterns_to_remove]
     current_files = os.listdir(subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
@@ -88,66 +121,21 @@ def getMeds(subject_files_dir):
     for item in subject_files:
         item = subject_files_dir + os.sep + item
         with open(item, 'r') as thefile:
-            testfile = iter(list(thefile))
+            item = subject_files_dir + os.sep + item
+            print("starting Med search for {}".format(item))
+            data = thefile.read()
+            for pattern in patterns_to_remove:
+                data = pattern.sub("",data)
             datapoints = defaultdict(dict)
-            line = testfile.next()
+            matches = med_pattern.findall(data)
+            for match in matches:
+                name, dose, lastdose, time = match
+                for item in name.split():
+                    if item in antibiotics:
+                        print("Abx - Name: {} Dose: {} Last Dose: {}\n Time: {}".format(name, dose, lastdose, time))
+                    if item in antivirals:
+                        print("Antiviral - Name: {} Dose: {} Last Dose: {}\n Time: {}".format(name, dose, lastdose, time))
 
-            while not line.startswith("Medications"):
-                line = testfile.next()
-                # start scheduled meds
-            meds = defaultdict(dict)
-            med_name = None
-            count = 0
-
-            for line in testfile:
-                line = line.strip()
-                if line == "":
-                    continue
-                if med_name == None:
-                    med_name = line
-                    med_dose_info = testfile.next().strip()
-                    med_time_info = testfile.next().strip()
-                    line = testfile.next().strip()
-                meds[med_name] = {'dosage': med_dose_info,
-                                  'time': med_time_info,
-                                  'admins': []}
-                # look for administrations
-                while True:
-                    if line == "":
-                        line = testfile.next().strip()
-                        continue
-                    if line.isdigit():
-                        meds[med_name]['admins'].append(line)
-                        line = testfile.next().strip()
-                        continue
-                    # dced and cancelled
-                    if line.find("D/C'd") != -1 or line.find("[C]") != -1:
-                        line = testfile.next().strip()
-                        continue
-                    # held
-                    if line.replace(")", "").replace("(", "").isdigit():
-                        line = testfile.next().strip()
-                        continue
-                    # done
-                    if line.startswith("Medications"):
-                        break
-                    # given med
-                    if meds.get(line, None) != None:
-                        med_name = line + str(count)
-                        count += 1
-                    else:
-                        med_name = line
-                    med_dose_info = testfile.next().strip()
-                    med_time_info = testfile.next().strip()
-                    break
-
-                if line.startswith("Medications"):
-                    print "lets stop here"
-                    break
-            for key, value in sorted(meds.iteritems()):
-                print key, meds[key]['time'], meds[key]['dosage'], \
-                    meds[key]['admins']
-                print
 
 
 def main():
@@ -160,7 +148,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
