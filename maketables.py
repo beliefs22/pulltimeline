@@ -14,7 +14,7 @@ def makeTable(subject_file):
     # vitals table
     cur.execute('DROP TABLE IF EXISTS vitals')
     cur.execute('CREATE TABLE vitals (time,bp,temp,rate,resp,spo2,\
-    pain_score,o2_device,o2_flow_rate_lmin)')
+    pain_score,device,rate_lmin)')
 
     # cbc table
     cur.execute('DROP TABLE IF EXISTS cbc')

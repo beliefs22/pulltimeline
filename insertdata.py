@@ -143,8 +143,6 @@ class InsertOtherData(InsertData):
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
                                     field_name = resultmatch.group(1)
-                                    if field_name.strip() == "Device:":
-                                        field_name = "O2_Device"                                        
                                     value = resultmatch.group(2)
                                     self.update_row(field_name, value, row_id)
                                 
@@ -152,8 +150,6 @@ class InsertOtherData(InsertData):
                                 elif resultmatch.group(3):
                                     valuept = re.compile(r'(^\s*\d+\S{0,1}\d*)')
                                     field_name = resultmatch.group(3).strip()
-                                    if field_name.strip() == "Device:":
-                                        field = "O2_Device"
                                     #indicate you moved to new line
                                     if new_line == False:
                                         next_line = data.next()
@@ -165,8 +161,6 @@ class InsertOtherData(InsertData):
                                 elif resultmatch.group(4) and\
                                      resultmatch.group(5):
                                     field_name = resultmatch.group(4)
-                                    if field_name.strip() == "Device:":
-                                        field_name = "O2_Device"
                                     value = resultmatch.group(5)
                                     self.update_row(field_name,value,row_id)                                    
                         #move to next line if you didn't see stop keyword
@@ -360,11 +354,13 @@ class Vitals(InsertOtherData):
         InsertOtherData.__init__(self, conn, data, logfilename)        
         self.resultpatterns = [makeNumPattern(word)
                               for word in ['BP','Temp','Rate','Resp',
-                                           'SpO2','Pain Score', 'O2 Device',
-                                           'O2 Flow Rate \(L/min\)',
-                                           'Device']]        
+                                           'SpO2','Pain Score', 'Device',
+                                           'Rate \(L/min\)'
+                                           ]
+                               ]
         self.startpatterns = [makeSearchPattern(word)
-                               for word in ['Vitals']]
+                               for word in ['Vitals']
+                              ]
         self.stop_word = 'Custom Formula'
         self.tablename = 'vitals'
 
@@ -516,8 +512,6 @@ class Assessment(InsertData):
                 if startmatch is not None and line.find('Braden') == -1:
                     try:
                         row_id = startmatch.group(1) + "-" + str(count)
-                        count += 1
-                        self.create_row(row_id)
                         while line.find(self.stop_word) == -1:
                             line = data.next()
                         for pattern2 in self.resultpatterns:
@@ -525,6 +519,8 @@ class Assessment(InsertData):
                             if resultmatch is not None:
                                 if resultmatch.group(1) and\
                                    resultmatch.group(2):
+                                    count += 1
+                                    self.create_row(row_id)
                                     field_name = resultmatch.group(1)
                                     result = resultmatch.group(2)
                                     self.update_row(field_name,result,row_id)

@@ -94,7 +94,6 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 header_locations[
                     'ps_edchrev' + visit_num + "_" + 'dispo']] = dispositions[arrival_info[4]]
             if arrival_info[4] == "discharged":
-                print("subject was discharged", study_id, subject_file)
                 cur.execute('''
                         SELECT disposition
                         FROM disposition
@@ -102,19 +101,14 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 data = cur.fetchall()
                 if data != []:
                     obs = False
-                    print("disposition points", data)
-                    for item in data:
-                        print("item is", item[0], len(item[0]), item[0] == 'observation', item[0] == u'observation',
-                              item[0].strip() == 'observation')
-                        if item[0] == 'observation':
+                    for disposition in data:
+                        if disposition[0] == 'observation':
                             obs = True
                     if obs:
-                        print(study_id, "was placed in obs and discharged")
                         data_to_write_csv[
                             header_locations[
                                 'ps_edchrev' + visit_num + "_" + 'dispoobs']] = "1"
                     else:
-                        print(study_id, "was discharged and not placed in obs")
                         data_to_write_csv[
                             header_locations[
                                 'ps_edchrev' + visit_num + "_" + 'dispoobs']] = "0"
@@ -187,7 +181,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
 
             # Oxygen Supplementation
             cur.execute('''
-                    SELECT o2_device, o2_flow_rate_lmin
+                    SELECT device, rate_lmin
                     FROM vitals
                     ''')
             oxygen_info = cur.fetchall()
@@ -198,27 +192,27 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                      'Intubated': "4", "None": "0"}
             final_route = "None"
             final_rate = 0
-            for item in oxygen_info:
+            for oxygen in oxygen_info:
                 # there is a o2 device present
-                if item[0] is not None:
-                    possible_route = route.get(item[0], None)
+                if oxygen[0] is not None:
+                    possible_route = route.get(oxygen[0], None)
                     if possible_route and \
                                     int(possible_route) > int(route.get(final_route)):
-                        final_route = item[0]
-                if item[1] is not None:
-                    possible_rate = item[1]
+                        final_route = oxygen[0]
+                if oxygen[1] is not None:
+                    possible_rate = oxygen[1]
                     try:
                         if int(possible_rate) >= final_rate:
-                            final_rate = item[1]
+                            final_rate = int(oxygen[1])
                     except ValueError:
-                        if float(possible_rate) >= final_rate:
-                            final_rate = item[1]
+                        if float(possible_rate) >= float(final_rate):
+                            final_rate = float(oxygen[1])
             if final_route == "None":
                 oxygen_type = "None Given"
                 oxygen_rate = "N/A"
             else:
                 oxygen_type = final_route
-                oxygen_rate = final_rate
+                oxygen_rate = str(final_rate)
 
             data_to_write['Supplemental Oxygen Route'] = oxygen_type
             data_to_write['Oxygen Rate'] = oxygen_rate
