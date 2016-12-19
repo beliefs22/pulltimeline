@@ -1,6 +1,6 @@
 import os
 import re
-
+import logging
 from maketables import makeTable
 
 
@@ -46,12 +46,13 @@ def pullDataFromCleanedFiles(ids, cleaned_files_dir, logfile):
         logfile (str) : log filename
         """
     from insertdata import Vitals, Cbc, Cmp, Medications, Influenza, Assessment
-    from insertdata import BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging
+    from insertdata import BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging, DischargeOrders
+    logging.basicConfig(filename=logfile, level=logging.DEBUG)
     sep = os.sep
     add_dir = lambda directory, filename: directory + sep + filename
     current_files = os.listdir(cleaned_files_dir)
     information_types = [Vitals, Cbc, Cmp, Medications, Influenza, Assessment,
-                         BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging]
+                         BloodGas, Cultures, RespVirus, Disposition, Xpert, Imaging, DischargeOrders]
     for subject_id in ids:
         print("Finding files for id {}".format(subject_id))
         subject_files = [filename
@@ -63,8 +64,9 @@ def pullDataFromCleanedFiles(ids, cleaned_files_dir, logfile):
             filename = add_dir(cleaned_files_dir, single_file)
             conn = makeTable(filename)
             print("Starting data extractions for {}".format(filename))
+            logging.debug("Starting data extractions for {}".format(filename))
             for information_type in information_types:
-                with open(filename, 'rb') as subject_file:
+                with open(filename, 'r') as subject_file:
                     data_extractor = information_type(conn, subject_file, logfile)
                     data_extractor.extractData()
             print("Finished data extraction for {}".format(filename))

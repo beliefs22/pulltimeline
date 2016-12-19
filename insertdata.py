@@ -1,6 +1,6 @@
 import re
 import logging
-from datetime import datetime
+import getcommonnames
 
 
 def makeNumPattern(word):
@@ -633,3 +633,38 @@ class Xpert(InsertDataWithoutResults):
                     row_id = startmatch.group(1) + "-" + str(count)
                     count += 1
                     self.create_row(row_id,'Xpert Flu')
+
+
+class DischargeOrders(InsertData):
+    def __init__(self, conn, data, logfilename):
+        InsertData.__init__(self, conn, data, logfilename)
+        self.startpatterns = [makeSearchPattern(word)
+                              for word in ['Discharge Orders']]
+        self.tablename = 'discharge_orders'
+
+        self.antibiotic_names = getcommonnames.getAbxNames()
+        self.antiviral_names = getcommonnames.getAntiviralNames()
+
+    def extractData(self):
+        logging.debug("starting discharge order insert")
+        data = self.data.read()
+        count = 1
+        discharge_med_patttern = re.compile(r'(Discharge Orders[ \n]+Placed[ \n]+)([\w\Wn]*?\d+:\d+:+\d+)')
+
+        result_match = discharge_med_patttern.findall(data)
+        if result_match is not None:
+            for group in result_match:
+                meds_strings = group[1].split(";")
+                for med in meds_strings:
+                    med_words = med.split()
+                    for word in med_words:
+                        if word in self.antibiotic_names or word in self.antiviral_names:
+                            row_id = str(count)
+                            field = 'name'
+                            value = word
+                            self.create_row(row_id)
+                            self.update_row(field, value, row_id)
+                            count += 1
+                            break
+
+

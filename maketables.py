@@ -60,8 +60,12 @@ def makeTable(subject_file):
     # xpert table
     cur.execute('DROP TABLE IF EXISTS xpert')
     cur.execute('CREATE TABLE xpert (time, type)')
-    conn.commit()
 
+    #discharge orders tables
+    cur.execute('DROP TABLE IF EXISTS discharge_orders')
+    cur.execute('CREATE TABLE discharge_orders (time, name)')
+
+    conn.commit()
     return conn
     
 def main():
