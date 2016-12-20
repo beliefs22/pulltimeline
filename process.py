@@ -7,14 +7,14 @@ from maketables import makeTable
 def getDirectories():
     """Returns directories where various files are located or saved to"""
     sep = os.sep
-    subject_files_dir = os.getcwd() + sep + 'Subject_Files'
-    cleaned_files_dir = subject_files_dir + sep + 'Cleaned_Files'
-    import_files_dir = os.getcwd() + sep + 'Import_Backups'
-    completed_files_dir = subject_files_dir + sep + 'Completed Files'
-    log_dir = os.getcwd() + sep + 'Logs'
-    source_dir = 'I:\Research\CEIRS\Year 3\Active Surveillance\Source \
+    subject_files_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source Documents for Chart Reviews\ED Subject Files'
+    cleaned_files_dir = r'H:\Pycharm Projects\timelinedata_working\Subject_Files\Cleaned_Files'
+    import_files_dir = r'H:\Pycharm Projects\timelinedata_working\Import_Backups'
+    completed_files_dir = r'H:\Pycharm Projects\timelinedata_working\Subject_Files\Completed Files'
+    log_dir = r'H:\Pycharm Projects\timelinedata_working\Logs'
+    source_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source \
 Documents for Chart Reviews'
-    ip_subject_files_dir = os.getcwd() + sep + 'Ip_Subject_Files'
+    ip_subject_files_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source Documents for Chart Reviews\IP Subject Files'
     directories = {'Subject Dir': subject_files_dir,
                    'Clean Dir': cleaned_files_dir,
                    'Import Dir': import_files_dir,
