@@ -7,13 +7,12 @@ from maketables import makeTable
 def getDirectories():
     """Returns directories where various files are located or saved to"""
     sep = os.sep
-    subject_files_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source Documents for Chart Reviews\ED Subject Files'
-    cleaned_files_dir = r'H:\Pycharm Projects\timelinedata_working\Subject_Files\Cleaned_Files'
+    subject_files_dir = r'H:\Pycharm Projects\timelinedata_working\Subject_Files'
+    cleaned_files_dir = r'H:\Pycharm Projects\timelinedata_working\Ip_Subject_Files\Cleaned_Files'
     import_files_dir = r'H:\Pycharm Projects\timelinedata_working\Import_Backups'
     completed_files_dir = r'H:\Pycharm Projects\timelinedata_working\Subject_Files\Completed Files'
     log_dir = r'H:\Pycharm Projects\timelinedata_working\Logs'
-    source_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source \
-Documents for Chart Reviews'
+    source_dir = r'H:\Pycharm Projects\timelinedata_working\Source_Documents'
     ip_subject_files_dir = r'I:\Research\CEIRS\Year 3\Active Surveillance\Source Documents for Chart Reviews\IP Subject Files'
     directories = {'Subject Dir': subject_files_dir,
                    'Clean Dir': cleaned_files_dir,
@@ -26,9 +25,9 @@ Documents for Chart Reviews'
     return directories
 
 
-def getIds(cleaned_files_dir):
+def getIds(ip_subject_file_dir):
     """Returns list of subject ids to test based on files in cleaned files directory"""
-    current_files = os.listdir(cleaned_files_dir)
+    current_files = os.listdir(ip_subject_file_dir)
     id_pat = re.compile(r'(_)(\d{4})')
     ids = set()
     for file_name in current_files:

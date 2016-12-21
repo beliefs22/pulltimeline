@@ -1,6 +1,7 @@
 import re
 import logging
 from datetime import datetime
+from collections import defaultdict
 
 def makeNumPattern(word):
     """Helper function to create patterns used to find results.
@@ -31,80 +32,106 @@ def makeStringPattern(word):
     return re.compile(template % (word,),re.M)
 
 class InsertData(object):
-    """Base Class for inserting data into the databse created for each subject
-
-    Attr:
-        matchpatterns (list): re pattern objects to identify results
-        headerpatterns (list): re pattern objects used to start result search
-        stop (str): determines when to stop result search
-        tablename (str): table data should be inserted into
-    Args:
-        cur (sqlite3 cursor): cur connected to database to insert data into
-        data (list): lines from text file containing subject information
-    """
-        
-    def __init__(self,conn,data,logfilename):
-        
-        #connection to the database for a unique subject
-        self.connection = conn
-        #cursor in that database connection
-        self.cursor = self.connection.cursor()
-        #list of data created from the text file containing subjects data
+    """Base Class for inserting data into the databse created for each subject"""
+    def __init__(self, conn, data):
+        self.conn = conn
         self.data = data
-        #words that indicate a result was found
-        self.resultpatterns = []
-        #words that indicate to start search for reseults
-        self.startpatterns = []
-        #word that indicates to stop result search
-        self.stop_word = ""
-        #table name used in create and update functions
-        self.tablename = ""
-        #logging file
-        self.logfilename = logfilename
-        logging.basicConfig(filename=self.logfilename,level=logging.DEBUG)
+        self.cur = self.conn.cursor()
 
-    def create_row(self, row_id):
-        """Creates base entry into the table to be updated as results are found
-        Args:
-            row_id (str): uniqe timepoint for the result
-        """
-        row_id = row_id.strip()
-        template = '''
-        Insert INTO %s
-        (time)
-        VALUES (?)''' % self.tablename
-        logging.debug(
-            "Created row in table %s with id %s" % (self.tablename,row_id))
-        self.cursor.execute(template, (row_id,))
-        self.connection.commit()
 
-    def update_row(self,field,value,row_id):
-        """Updates the row with given paramaters with given value
-        Args:
-            field (str): field to update
-            value (str): value to update field to
-            row_id (str): record to update
-        """
-        value = value.strip()
-        row_id = row_id.strip()
-        field = field.lower().strip().replace(" ","_").replace(":","")
-        field = field.replace(",","_").replace("/","").replace("(","")
-        field = field.replace(")","").replace("-","_").replace("__","_")
-        logging.debug(
-            "row_id is %s field name is %s value is %s" % (
-                row_id, field, value))
-        #insert given field and value into the template
-        template = '''
-        Update %s
-        Set %s= ?
-        Where time= ?''' %\
-        (self.tablename, field)
-        self.cursor.execute(template,(value, row_id))
-        self.connection.commit
 
 class InsertVitalData(InsertData):
+    def __init__(self, conn, data):
+        InsertData.__init__(self, conn, data)
 
-    def __init__(self, conn, data, logfilename):
-        InsertData.__init__(self, conn, data, logfilename)
-        self.startpatterns = ['Temperature', 'Heart Rate', 'BP (cuff)',
-                              'GCS', 'SpO2', 'O2 Device']
+
+    def extractData(self):
+        for vital_type, values in self.data.iteritems():
+            for pair in values:
+                time = pair[0]
+                value = pair[1]
+                self.cur.execute('''
+                INSERT INTO vitals
+                (time, type, value)
+                VALUES
+                (?, ?, ?)
+                ''', (time, vital_type, value))
+
+                self.conn.commit()
+
+
+
+
+class InsertLabData(InsertData):
+    def __init__(self, conn, data):
+        InsertData.__init__(self, conn, data)
+        self.search_words = ['White Blood Cell Count','Hematocrit','Sodium', 'Potassium',
+                             'pH, Non-Arterial', 'pH, Arterial', 'Urea Nitrogen', 'Influenza A NAT',
+                             'RSV NAT', 'Rhinovirus NAT', 'Parainfluenzae 1 NAT','Parainfluenzae 2 NAT',
+                             'Parainfluenzae 3 NAT', 'Metapneumo NATT','Adenovirus NAT', 'Blood Culture\n\t',
+                             'Urine Culture\n\t', 'Respiratory Culture\n\t', 'Viral Culture, Respiratory\n\t',
+                             'Blood Culture \(High Panic\)\n\t']
+
+    def extractData(self):
+        date_pat = re.compile(r'(\d+/\d+/\d+)')
+        result_pattern_template = r'({}.*?$)'
+        for lab_type, values in self.data.iteritems():
+            for pair in values:
+                time = pair[1]
+                date_match = date_pat.search(time)
+                if date_match:
+                    time = date_match.group(1)
+                value = pair[0]
+                component_results = defaultdict(list)
+                for word in self.search_words:
+                    search_pattern = re.compile(result_pattern_template.format(word),
+                                                flags=re.MULTILINE | re.IGNORECASE)
+                    match = search_pattern.search(value)
+                    if match:
+                        component_results[lab_type].append(match.group(1))
+                value = ",".join(component_results[lab_type])
+                if value == "":
+                    value = pair[0]
+                self.cur.execute('''
+                INSERT INTO labs
+                (time, type, value)
+                VALUES
+                (?, ?, ?)
+                ''', (time, lab_type, value))
+
+                self.conn.commit()
+
+
+class InsertMedicationData(InsertData):
+    def __init__(self, conn, data):
+        InsertData.__init__(self, conn, data)
+        pass
+
+    def extractData(self):
+        for med_type, values in self.data.iteritems():
+            time = ",".join(values)
+            self.cur.execute('''
+                INSERT INTO medications
+                (time, type)
+                VALUES
+                (?, ?)
+                ''', (time, med_type))
+
+            self.conn.commit()
+
+class InsertDispositionData(InsertData):
+    def __init__(self, conn, data):
+        InsertData.__init__(self, conn, data)
+        pass
+
+    def extractData(self):
+        for dispo_type, values in self.data.iteritems():
+            time = ",".join(values)
+            self.cur.execute('''
+                INSERT INTO dispo
+                (time, type)
+                VALUES
+                (?, ?)
+                ''', (time, dispo_type))
+
+            self.conn.commit()
