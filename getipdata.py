@@ -5,6 +5,7 @@ import re
 import insertdataip
 import makeiptables
 import logging
+import createsource_ip
 
 
 def makePattern(pattern):
@@ -202,14 +203,17 @@ def getData():
     ip_subject_file_dir = directories['IP Subject Dir']
     cleaned_file_dir = directories['Clean Dir']
     subject_ids = process.getIds(ip_subject_file_dir)
+    source_files_dir = directories['Source Dir']
+    import_files_dir = directories['Import Dir']
     for base_id in subject_ids:
-        subject_id = '01_11_A_IP_' + base_id
+        subject_id = '01_11_A_IP1_' + base_id
         print "starting data extraction for {}".format(subject_id)
         conn = makeiptables.maketables(subject_id, cleaned_file_dir)
         getVitals(ip_subject_file_dir, base_id, conn)
         getLabs(ip_subject_file_dir, base_id, conn)
         getMeds(ip_subject_file_dir, base_id, conn)
         getDisposition(ip_subject_file_dir, base_id, conn)
+        createsource_ip.createSourceFromData(subject_ids,cleaned_file_dir,source_files_dir, import_files_dir, logfile=None)
 
 
 
