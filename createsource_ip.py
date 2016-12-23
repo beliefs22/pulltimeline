@@ -88,7 +88,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             med_data = cur.fetchall()
             if med_data:
                 for medication in med_data:
-                    admin_times = ",".join([admin.split()[0] for admin in medication[0].split(",")])
+                    admin_times = ",".join([admin.split()[0] for admin in medication[0].split(",") if admin.split()[0] != 'RN'])
                     med_name = medication[1]
                     if med_name in abx_names:
                         abx_count += 1
@@ -97,8 +97,63 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                         antiviral_count += 1
                         data_to_write['Antiviral # {} - {}'.format(antiviral_count, med_name)] = admin_times
 
+
+            # Influenza Testing
+            # Result Types
+            result_types = {'resp virus complex': {'negative': ['Influenza A NAT No RNA Detected',
+                                                                'RSV NAT No RNA Detected',
+                                                                'Rhinovirus NAT No RNA Detected',
+                                                                'Parainfluenzae 1 NAT No RNA Detected',
+                                                                'Parainfluenzae 2 NAT No RNA Detected',
+                                                                'Parainfluenzae 3 NAT No RNA Detected'],
+                                                   'positive': ['Influenza A NAT RNA Detected',
+                                                                'RSV NAT RNA Detected',
+                                                                'Rhinovirus NAT RNA Detected',
+                                                                'Parainfluenzae 1 NAT RNA Detected',
+                                                                'Parainfluenzae 2 NAT RNA Detected',
+                                                                'Parainfluenzae 3 NAT RNA Detected']},
+                            'viral culture, respiratory': {'negative': ['No virus isolated'],
+                                                           'positive': []},
+                            'influenza a/b + rsv': {'negative': ['Influenza A NAT No RNA Detected',
+                                                                 'RSV NAT No RNA Detected'],
+                                                    'positive': ['Influenza A NAT RNA Detected',
+                                                                 'RSV NAT RNA Detected']}
+                            }
+            cur.execute('''
+            SELECT *
+            FROM labs
+            WHERE type = ?
+            OR type = ?
+            OR type = ?''', ('resp virus complex','viral culture, respiratory','influenza a/b + rsv'))
+
+            influenza_data = cur.fetchall()
+            if influenza_data:
+                for influenza_test in influenza_data:
+                    time, test_type, value = influenza_test
+                    value = value.replace("\t"," ")
+                    result_matches = result_types.get(test_type)
+                    negative_results = result_matches.get('negative')
+                    for negative_match in negative_results:
+                        if value.find(negative_match) != -1:
+                            data_to_write['Influeza Test Type {}'.format(test_type + " " + time)] = \
+                                data_to_write.get('Influeza Test Type {}'.format(test_type + " " + time), []) + \
+                                            [negative_match]
+                    positive_results = result_matches.get('positive')
+                    for positive_match in positive_results:
+                        if value.find(positive_match) != -1:
+                            data_to_write['Influeza Test Type {}'.format(test_type + " " + time)] = \
+                                data_to_write.get('Influeza Test Type {}'.format(test_type + " " + time), []) + \
+                                            [positive_match]
+                    if data_to_write.get('Influeza Test Type {}'.format(test_type + " " + time)):
+                        data_to_write['Influeza Test Type {}'.format(test_type + " " + time)] = \
+                            ",".join(data_to_write['Influeza Test Type {}'.format(test_type + " " + time)])
+
             for key,value in data_to_write.iteritems():
                 print "{} : {}".format(key, value)
+
+
+
+
 
 def main():
     pass
