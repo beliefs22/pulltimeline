@@ -673,73 +673,79 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 data_to_write['Total Cultures Done'] = str(culture_count)
 
             # Discharge Orders
-            cur.execute('''
-                    SELECT *
-                    FROM discharge_orders
-                    ''')
-            abx_names = getcommonnames.getAbxNames()
-            antiviral_names = getcommonnames.getAntiviralNames()
-            abx_count = 0
-            antiviral_count = 0
-
-            data = cur.fetchall()
-            if data != []:
-                count = 1
-                for row in data:
-                    dose_time = row[0].split("-")[0]
-                    medication_string = row[1].split(" ")
-                    for medication in medication_string:
-                        if medication in abx_names:
-                            if abx_count > 3:
-                                break
-                            data_to_write_csv[
-                                header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] = "1"
-                            result = "Antibiotic: %s" % \
-                                     (medication,)
-                            data_to_write['Discharge Antibiotic #' + str(count)] = result
-                            abx_count = count
-                            data_to_write_csv[
-                                header_locations[
-                                    'ps_edchrev' + visit_num + "_" + 'dabx' + \
-                                    str(abx_count) + 'name'
-                                    ]] = medication
-                            count += 1
-                            break
-                        if medication in antiviral_names:
-                            if antiviral_count > 2:
-                                break
-                            data_to_write_csv[
-                                header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] = "1"
-                            result = "Antiviral: %s" % \
-                                     (medication,)
-                            data_to_write['Discharge Antiviral #' + str(count)] = result
-
-                            antiviral_count = count - abx_count
-                            count += 1
-                            data_to_write_csv[
-                                header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc' + \
-                                                 str(antiviral_count)]] = medication
-                            break
-            data_to_write['Total Discharge Antibiotics Given'] = str(abx_count)
-            data_to_write['Total Discharge Antivirals Given'] = str(antiviral_count)
-            if data_to_write_csv[
-                header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] == "1":
+            if data_to_write['Final Disposition'] == 'admitted':
                 data_to_write_csv[
-                    header_locations[
-                        'ps_edchrev' + visit_num + "_" + 'abxquant']] = str(abx_count)
+                    header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] = "98"
 
+                data_to_write_csv[
+                    header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] = "97"
             else:
-                data_to_write_csv[
-                    header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] = "0"
-            if data_to_write_csv[
-                header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] == "1":
-                data_to_write_csv[
-                    header_locations[
-                        'ps_edchrev' + visit_num + "_" + 'fluavdiscct'
-                        ]] = str(antiviral_count)
-            else:
-                data_to_write_csv[
-                    header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] = "0"
+                cur.execute('''
+                        SELECT *
+                        FROM discharge_orders
+                        ''')
+                abx_names = getcommonnames.getAbxNames()
+                antiviral_names = getcommonnames.getAntiviralNames()
+                abx_count = 0
+                antiviral_count = 0
+
+                data = cur.fetchall()
+                if data:
+                    count = 1
+                    for row in data:
+                        medication_string = row[1].split(" ")
+                        for medication in medication_string:
+                            if medication in abx_names:
+                                if abx_count > 3:
+                                    break
+                                data_to_write_csv[
+                                    header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] = "1"
+                                result = "Antibiotic: %s" % \
+                                         (medication,)
+                                data_to_write['Discharge Antibiotic #' + str(count)] = result
+                                abx_count = count
+                                data_to_write_csv[
+                                    header_locations[
+                                        'ps_edchrev' + visit_num + "_" + 'dabx' + \
+                                        str(abx_count) + 'name'
+                                        ]] = medication
+                                count += 1
+                                break
+                            if medication in antiviral_names:
+                                if antiviral_count > 2:
+                                    break
+                                data_to_write_csv[
+                                    header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] = "1"
+                                result = "Antiviral: %s" % \
+                                         (medication,)
+                                data_to_write['Discharge Antiviral #' + str(count)] = result
+
+                                antiviral_count = count - abx_count
+                                count += 1
+                                data_to_write_csv[
+                                    header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc' + \
+                                                     str(antiviral_count)]] = medication
+                                break
+                data_to_write['Total Discharge Antibiotics Given'] = str(abx_count)
+                data_to_write['Total Discharge Antivirals Given'] = str(antiviral_count)
+                if data_to_write_csv[
+                    header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] == "1":
+                    data_to_write_csv[
+                        header_locations[
+                            'ps_edchrev' + visit_num + "_" + 'abxquant']] = str(abx_count)
+
+                else:
+                    data_to_write_csv[
+                        header_locations['ps_edchrev' + visit_num + "_" + 'dabx']] = "0"
+                if data_to_write_csv[
+                    header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] == "1":
+                    data_to_write_csv[
+                        header_locations[
+                            'ps_edchrev' + visit_num + "_" + 'fluavdiscct'
+                            ]] = str(antiviral_count)
+                else:
+                    data_to_write_csv[
+                        header_locations['ps_edchrev' + visit_num + "_" + 'fluavdisc']] = "0"
 
             for item in data_to_write:
                 outfile.write(item + ": " + data_to_write[item] + "\n")
