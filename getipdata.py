@@ -12,11 +12,12 @@ def makePattern(pattern):
     template = r'({pattern}[ \n]+)(.*?)({pattern}[ \n]+)'.format(pattern=pattern)
     return re.compile(template,flags=re.IGNORECASE | re.DOTALL )
 
-def getVitals(ip_subject_files_dir, subject_id, conn):
+
+def getVitals(ip_subject_files_dir, subject_id, conn, visit_num):
     current_files = os.listdir(ip_subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
-                     if subject_file.find("IP") != -1
+                     if subject_file.find("IP{}".format(visit_num)) != -1
                      if subject_file.find("Vitals") != -1
                      if subject_file.find(".txt") != -1
                      if subject_file.find(subject_id) != -1
@@ -65,7 +66,7 @@ def getVitals(ip_subject_files_dir, subject_id, conn):
             #     print "______________________"
 
 
-def getLabs(ip_subject_files_dir, subject_id, conn):
+def getLabs(ip_subject_files_dir, subject_id, conn, visit_num):
     relevant_labs = ['cbc', 'cmp','xr chest','influenza a/b + rsv','ct chest', 'basic metabolic panel', 'culture',
                      'blood gases', 'resp virus complex']
     relevant_cultures = ['bacterial/yeast culture, blood', 'bacterial culture/smear, respiratory',
@@ -73,7 +74,7 @@ def getLabs(ip_subject_files_dir, subject_id, conn):
     current_files = os.listdir(ip_subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
-                     if subject_file.find("IP") != -1
+                     if subject_file.find("IP{}".format(visit_num)) != -1
                      if subject_file.find("Labs") != -1
                      if subject_file.find(".txt") != -1
                      if subject_file.find(subject_id) != -1
@@ -111,9 +112,7 @@ def getLabs(ip_subject_files_dir, subject_id, conn):
             #     print "______________________"
 
 
-
-
-def getMeds(ip_subject_files_dir, subject_id, conn):
+def getMeds(ip_subject_files_dir, subject_id, conn, visit_num):
     import getcommonnames
     antibiotics = getcommonnames.getAbxNames()
     antivirals = getcommonnames.getAntiviralNames()
@@ -121,7 +120,7 @@ def getMeds(ip_subject_files_dir, subject_id, conn):
     current_files = os.listdir(ip_subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
-                     if subject_file.find("IP") != -1
+                     if subject_file.find("IP{}".format(visit_num)) != -1
                      if subject_file.find("Medications") != -1
                      if subject_file.find(".txt") != -1
                      if subject_file.find(subject_id) != -1
@@ -166,12 +165,12 @@ def getMeds(ip_subject_files_dir, subject_id, conn):
             #     print "______________________"
 
 
-def getDisposition(ip_subject_files_dir, subject_id, conn):
+def getDisposition(ip_subject_files_dir, subject_id, conn, visit_num):
 
     current_files = os.listdir(ip_subject_files_dir)
     subject_files = [subject_file
                      for subject_file in current_files
-                     if subject_file.find("IP") != -1
+                     if subject_file.find("IP{}".format(visit_num)) != -1
                      if subject_file.find("dispo") != -1
                      if subject_file.find(".txt") != -1
                      if subject_file.find(subject_id) != -1
@@ -205,18 +204,29 @@ def getData():
     subject_ids = process.getIds(ip_subject_file_dir)
     source_files_dir = directories['Source Dir']
     import_files_dir = directories['Import Dir']
+    current_files = os.listdir(ip_subject_file_dir)
     for base_id in subject_ids:
-        subject_id = '01_11_A_IP1_' + base_id
-        print "starting data extraction for {}".format(subject_id)
-        # conn = makeiptables.maketables(subject_id, cleaned_file_dir)
-        # getVitals(ip_subject_file_dir, base_id, conn)
-        # getLabs(ip_subject_file_dir, base_id, conn)
-        # getMeds(ip_subject_file_dir, base_id, conn)
-        # getDisposition(ip_subject_file_dir, base_id, conn)
+        subject_files = [subject_file
+                         for subject_file in os.listdir(ip_subject_file_dir)
+                         if subject_file.find(base_id) != -1
+                         if subject_file.find('Vitals') != -1
+                         ]
+        for subject_file in subject_files:
+            visit_num_pat = re.compile(r'(IP)(\d)')
+            visit_match = visit_num_pat.search(subject_file)
+            if visit_match is not None:
+                visit_num = visit_match.group(2)
+            else:
+                print "Could not find visit number for {}".format(subject_file)
+                continue
+            subject_id = '01_11_A_IP{}_'.format(visit_num) + base_id
+            print "starting data extraction for {}".format(subject_id)
+            conn = makeiptables.maketables(subject_id, cleaned_file_dir)
+            getVitals(ip_subject_file_dir, base_id, conn, visit_num)
+            getLabs(ip_subject_file_dir, base_id, conn, visit_num)
+            getMeds(ip_subject_file_dir, base_id, conn, visit_num)
+            getDisposition(ip_subject_file_dir, base_id, conn, visit_num)
     createsource_ip.createSourceFromData(subject_ids,cleaned_file_dir,source_files_dir, import_files_dir, logfile=None)
-
-
-
 
 
 def main():

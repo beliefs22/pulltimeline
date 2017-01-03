@@ -58,7 +58,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             # outfile = open(source_files_dir + sep + subject_file.replace(".db", ".txt"), "w")
             # Study ID
             study_id = "01-11-A-{}".format(subject_id)
-            data_to_write['Study ID'] = study_id
+            data_to_write['Study ID - Visit {}'.format(visit_num)] = study_id
 
             # Disposition
 
