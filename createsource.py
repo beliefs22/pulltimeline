@@ -575,7 +575,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 count = 1
                 for row in data:
                     dose_time = row[0].split("-")[0]
-                    medication_string = row[1].split(" ")
+                    medication_string = row[1].replace("(","").replace(")","").split(" ")
                     for medication in medication_string:
                         if medication in abx_names:
                             if abx_count > 4:
@@ -693,7 +693,7 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                 if data:
                     count = 1
                     for row in data:
-                        medication_string = row[1].split(" ")
+                        medication_string = row[1].replace("(","").replace(")","").split(" ")
                         for medication in medication_string:
                             if medication in abx_names:
                                 if abx_count > 3:

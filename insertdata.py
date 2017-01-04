@@ -534,8 +534,8 @@ class InsertDataWithoutResults(InsertData):
         InsertData.__init__(self, conn, data, logfilename)
 
     def create_row(self, row_id, resulttype):
-        row_id = row_id.strip()
-        resulttype = resulttype.strip()
+        row_id = unicode(row_id.strip().decode('ascii','ignore'))
+        resulttype = unicode(resulttype.strip().decode('ascii','ignore'))
         sql_template ='''
         Insert INTO %s
         (time, type)

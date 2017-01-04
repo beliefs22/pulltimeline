@@ -1,8 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bb6d6b5-bc6b-4aac-bd11-69b86a915f04" name="Default" comment="">
+    <list default="true" id="8bb6d6b5-bc6b-4aac-bd11-69b86a915f04" name="Default" comment="createsource - added admitt option to dischage orders , so it will add 'NA' if subject is addmited&#10;">
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016-11-15 15" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/log2016-11-15 14" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0219_clean.db" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0220_clean.db" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0221_clean.db" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_11_23.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_11_28.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_11_29.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_05.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_06.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_07.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_08.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_09.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_12.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_13.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_14.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_15.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_16.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_19.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_20.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2016_12_22.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2017_01_03.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/CEIRS_ACTIVE_IMPORT_FILE2017_01_04.csv" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Import_Backups/New Text Document.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_15.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_16.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_17.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_18.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_22.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_23.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_28.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_11_29.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_05.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_06.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_07.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_08.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_09.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_12.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_13.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_14.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_15.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_16.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_19.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_20.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2016_12_22.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2017_01_03.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Logs/Log_2017_01_04.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0165.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0166.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0167.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0168.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0169.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0170.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0171.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0172.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0173.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0174.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0175.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0176.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0177.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0178.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0179.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0180.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0181.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0182.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0183.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0184.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0185.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0186.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0187.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0188.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Source_Documents/01_11_A_ED1_0189.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0219_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0220_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Cleaned_Files/01_11_A_ED1_0221_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0165_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0166_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0167_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0168_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0169_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0170_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0171_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0172_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0173_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0174_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0175_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0176_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0177_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0178_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0179_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0180_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0181_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0182_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0183_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0184_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0185_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0186_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0187_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0188_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0189_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0190_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0191_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0192_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0193_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0194_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0195_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0196_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0197_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0198_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0199_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0200_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0201_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0202_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0203_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0204_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0205_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0206_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0207_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0208_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0209_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0210_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0211_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0212_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0213_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0214_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0215_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0216_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0217_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0218_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0219_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0220_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED1_0221_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0178_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0181_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0184_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0196_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0197_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0200_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED2_0218_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED3_0200_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/Subject_Files/Completed Files/01_11_A_ED4_0178_clean.txt" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/parsiminous version/parseing.py" />
+      <change type="NEW" beforePath="" afterPath="H:/timelinedata/parsiminous version/test.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pulltimeline.iml" afterPath="$PROJECT_DIR$/.idea/pulltimeline.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/createsource.py" afterPath="$PROJECT_DIR$/createsource.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getcommonnames.py" afterPath="$PROJECT_DIR$/getcommonnames.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/insertdata.py" afterPath="$PROJECT_DIR$/insertdata.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +175,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createsource.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="abxnames.txt" pinned="false" current-in-tab="false">
+        <entry file="file://H:/timelinedata/abxnames.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1825">
+              <caret line="447" column="18" lean-forward="false" selection-start-line="447" selection-start-column="18" selection-end-line="447" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insertdata.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/insertdata.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6224">
+              <caret line="539" column="22" lean-forward="false" selection-start-line="539" selection-start-column="22" selection-end-line="539" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createsource.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/createsource.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="680" column="90" lean-forward="false" selection-start-line="680" selection-start-column="90" selection-end-line="680" selection-end-column="90" />
+            <state relative-caret-position="139">
+              <caret line="577" column="47" lean-forward="false" selection-start-line="577" selection-start-column="47" selection-end-line="577" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getcommonnames.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/getcommonnames.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -41,9 +219,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>is not None</find>
-      <find>possible</find>
-      <find>disposi</find>
       <find>vitals</find>
       <find>vital</find>
       <find>o2_device</find>
@@ -68,6 +243,12 @@
       <find>admitted</find>
       <find>Final dis</find>
       <find>98</find>
+      <find>pipera</find>
+      <find>generic</find>
+      <find>Generic</find>
+      <find>zosyn</find>
+      <find>finished writing</find>
+      <find>abx</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -84,24 +265,25 @@
       <list>
         <option value="$PROJECT_DIR$/cleanfiles.py" />
         <option value="$PROJECT_DIR$/deletephi.py" />
-        <option value="$PROJECT_DIR$/getcommonnames.py" />
         <option value="$PROJECT_DIR$/importrecords.py" />
         <option value="$PROJECT_DIR$/importtoredcap.py" />
         <option value="H:/timelinedata/run.py" />
-        <option value="H:/timelinedata/abxnames.txt" />
         <option value="$PROJECT_DIR$/process.py" />
         <option value="$PROJECT_DIR$/maketables.py" />
         <option value="$PROJECT_DIR$/insertdata.py" />
+        <option value="H:/timelinedata/abxnames.txt" />
+        <option value="H:/timelinedata/.gitignore" />
+        <option value="$PROJECT_DIR$/getcommonnames.py" />
         <option value="$PROJECT_DIR$/createsource.py" />
         <option value="$PROJECT_DIR$/getdata.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1456" />
+    <option name="height" value="916" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -119,6 +301,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,14 +327,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="Push.Settings">
+    <excluded-roots>
+      <path value="$PROJECT_DIR$" />
+    </excluded-roots>
   </component>
   <component name="RunManager" selected="Python.run">
     <configuration default="false" name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -354,6 +541,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8bb6d6b5-bc6b-4aac-bd11-69b86a915f04" name="Default" comment="" />
@@ -425,7 +615,28 @@
       <option name="project" value="LOCAL" />
       <updated>1483462092718</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="createsource - added admitt option to dischage orders , so it will add 'NA' if subject is addmited&#10;">
+      <created>1483462536702</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1483462536702</updated>
+    </task>
+    <task id="LOCAL-00011" summary="committing abx names and de-identified documents&#10;">
+      <created>1483563980937</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1483563980937</updated>
+    </task>
+    <task id="LOCAL-00012" summary="updating git ignore&#10;">
+      <created>1483565614234</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1483565614234</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -438,15 +649,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1456" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18282403" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24753174" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23484848" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5052687" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.49746513" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32792208" sideWeight="0.4947313" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39540815" sideWeight="0.4947313" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -459,6 +670,25 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23484848" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5052687" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.49746513" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780612" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39540815" sideWeight="0.4947313" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24753174" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -470,36 +700,15 @@
     <MESSAGE value="Harded coded Directory names to make sure PHI is only in protected folders. Program will be run from protected folders in production so os.getcwd should work then" />
     <MESSAGE value="createsource - added discharge orders process&#10;insertdata - added discharge orders class&#10;maketables - added discharge orders tables&#10;process - added logging &#10;" />
     <MESSAGE value="createsource - added admitt option to dischage orders , so it will add 'NA' if subject is addmited&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="createsource - added admitt option to dischage orders , so it will add 'NA' if subject is addmited&#10;" />
+    <MESSAGE value="committing abx names and de-identified documents&#10;" />
+    <MESSAGE value="updating git ignore&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating git ignore&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://H:/timelinedata/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://H:/timelinedata/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/createsource.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="90" lean-forward="false" selection-start-line="9" selection-start-column="90" selection-end-line="9" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insertdata.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8993">
@@ -512,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1037">
           <caret line="61" column="50" lean-forward="false" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -520,7 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="66" column="58" lean-forward="true" selection-start-line="66" selection-start-column="58" selection-end-line="66" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -529,7 +736,7 @@
         <state relative-caret-position="442">
           <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
           <folding>
-            <element signature="e#0#68#0" expanded="true" />
+            <element signature="e#0#68#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -561,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="61" lean-forward="false" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -569,7 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="66" column="47" lean-forward="false" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -578,7 +783,7 @@
         <state relative-caret-position="306">
           <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
-            <element signature="e#0#68#0" expanded="true" />
+            <element signature="e#0#68#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -595,7 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -611,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -627,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getcommonnames.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/importrecords.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -813,10 +1008,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/maketables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="61" column="50" lean-forward="false" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://H:/timelinedata/CEIRSActiveSurveillance_ImportTemplate_2016-11-17.csv" />
+    <entry file="file://H:/timelinedata/CEIRS_ACTIVE_IMPORT_FILE.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-233">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://H:/timelinedata/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://H:/timelinedata/abxnames.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        <state relative-caret-position="1825">
+          <caret line="447" column="18" lean-forward="false" selection-start-line="447" selection-start-column="18" selection-end-line="447" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -828,44 +1055,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insertdata.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="461" column="0" lean-forward="false" selection-start-line="461" selection-start-column="0" selection-end-line="461" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getdata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/maketables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="61" column="50" lean-forward="false" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+        <state relative-caret-position="6224">
+          <caret line="539" column="22" lean-forward="false" selection-start-line="539" selection-start-column="22" selection-end-line="539" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/createsource.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="680" column="90" lean-forward="false" selection-start-line="680" selection-start-column="90" selection-end-line="680" selection-end-column="90" />
+        <state relative-caret-position="139">
+          <caret line="577" column="47" lean-forward="false" selection-start-line="577" selection-start-column="47" selection-end-line="577" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getdata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getcommonnames.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
           <folding />
         </state>
       </provider>
