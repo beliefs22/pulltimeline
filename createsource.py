@@ -132,8 +132,25 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                     SELECT *
                     FROM vitals
                     ''')
+            vital_points = {}
+            # loop through all values to replace the rows where an assessment wasn't done
+            possible_points = cur.fetchall()
+            while True:
+                for point in possible_points:
+                    if not vital_points.get('temp'):
+                        vital_points['temp'] = point[2]
+                    if not vital_points.get('pulse'):
+                        vital_points['pulse'] = point[3]
+                    if not vital_points.get('resp'):
+                        vital_points['resp'] = point[4]
+                    if not vital_points.get('o2s'):
+                        vital_points['o2s'] = point[5]
+                    if not vital_points.get('sbp'):
+                        if point[1]:
+                            vital_points['sbp'] = point[1].split("/")[0]
+                break
 
-            vital_info = cur.fetchone()
+
             data_to_write['Temperature'] = "999.9"
             data_to_write['Pulse'] = "999"
             data_to_write['Respiratory Rate'] = "999"
@@ -151,32 +168,31 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             data_to_write_csv[
                 header_locations['ps_edchrev' + visit_num + "_" + 'o2s']] = "999"
 
-            if vital_info is not None:
-                if vital_info[2] is not None:
-                    data_to_write['Temperature'] = vital_info[2]
+            if vital_points is not None:
+                if vital_points['temp'] is not None:
+                    data_to_write['Temperature'] = vital_points['temp']
                     data_to_write_csv[
                         header_locations[
-                            'ps_edchrev' + visit_num + "_" + 'temp']] = vital_info[2]
-                if vital_info[3] is not None:
-                    data_to_write['Pulse'] = vital_info[3]
+                            'ps_edchrev' + visit_num + "_" + 'temp']] = vital_points['temp']
+                if vital_points['pulse'] is not None:
+                    data_to_write['Pulse'] = vital_points['pulse']
                     data_to_write_csv[
                         header_locations[
-                            'ps_edchrev' + visit_num + "_" + 'pulse']] = vital_info[3]
-                if vital_info[4] is not None:
-                    data_to_write['Respiratory Rate'] = vital_info[4]
+                            'ps_edchrev' + visit_num + "_" + 'pulse']] = vital_points['pulse']
+                if vital_points['resp'] is not None:
+                    data_to_write['Respiratory Rate'] = vital_points['resp']
                     data_to_write_csv[
                         header_locations[
-                            'ps_edchrev' + visit_num + "_" + 'rr']] = vital_info[4]
-                if vital_info[1] is not None:
-                    sbp = vital_info[1].split("/")[0]
-                    data_to_write['Systolic Blood Pressure'] = sbp
+                            'ps_edchrev' + visit_num + "_" + 'rr']] = vital_points['resp']
+                if vital_points['sbp'] is not None:
+                    data_to_write['Systolic Blood Pressure'] = vital_points['sbp']
                     data_to_write_csv[
-                        header_locations['ps_edchrev' + visit_num + "_" + 'sbp']] = sbp
-                if vital_info[5] is not None:
-                    data_to_write['Oxygen Saturation'] = vital_info[5]
+                        header_locations['ps_edchrev' + visit_num + "_" + 'sbp']] = vital_points['sbp']
+                if vital_points['o2s'] is not None:
+                    data_to_write['Oxygen Saturation'] = vital_points['o2s']
                     data_to_write_csv[
                         header_locations[
-                            'ps_edchrev' + visit_num + "_" + 'o2s']] = vital_info[5]
+                            'ps_edchrev' + visit_num + "_" + 'o2s']] = vital_points['o2s']
 
             # Oxygen Supplementation
             cur.execute('''
@@ -571,13 +587,17 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
             antiviral_count = 0
 
             data = cur.fetchall()
+            found_meds = []
             if data != []:
                 count = 1
                 for row in data:
                     dose_time = row[0].split("-")[0]
-                    medication_string = row[1].replace("(","").replace(")","").split(" ")
+                    medication_string = row[1].replace("(","").replace(")","").split()
                     for medication in medication_string:
-                        if medication in abx_names:
+                        if medication in found_meds:
+                            break
+                        if medication in abx_names and medication not in found_meds:
+                            found_meds.append(medication)
                             if abx_count > 4:
                                 break
                             data_to_write_csv[
@@ -614,7 +634,8 @@ def createSourceFromData(ids, cleaned_files_dir, source_files_dir, import_files_
                                 arrival_info[0]
                             count += 1
                             break
-                        if medication in antiviral_names:
+                        if medication in antiviral_names and medication not in found_meds:
+                            found_meds.append(medication)
                             if antiviral_count > 2:
                                 break
                             data_to_write_csv[

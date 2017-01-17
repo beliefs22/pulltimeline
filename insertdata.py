@@ -72,7 +72,7 @@ class InsertData(object):
         Args:
             row_id (str): uniqe timepoint for the result
         """
-        row_id = row_id.strip()
+        row_id = unicode(row_id.strip().decode('ascii','ignore'))
         template = '''
         Insert INTO %s
         (time)
@@ -89,11 +89,12 @@ class InsertData(object):
             value (str): value to update field to
             row_id (str): record to update
         """
-        value = value.strip()
-        row_id = row_id.strip()
+        value = unicode(value.strip().decode('ascii','ignore'))
+        row_id = unicode(row_id.strip().decode('ascii','ignore'))
         field = field.lower().strip().replace(" ","_").replace(":","")
         field = field.replace(",","_").replace("/","").replace("(","")
         field = field.replace(")","").replace("-","_").replace("__","_")
+        field = unicode(field.decode('ascii','ignore'))
         logging.debug(
             "row_id is %s field name is %s value is %s" % (
                 row_id, field, value))
@@ -618,7 +619,7 @@ class Xpert(InsertDataWithoutResults):
     def __init__(self, conn, data, logfilename):
         InsertDataWithoutResults.__init__(self, conn, data, logfilename)
         self.startpatterns = [makeSearchPattern(word)
-                              for word in ['Orders Placed XPERT']]
+                              for word in ['Orders Placed	XPERT']]
         self.tablename = 'xpert'
 
     def extractData(self):
@@ -649,19 +650,25 @@ class DischargeOrders(InsertData):
         logging.debug("starting discharge order insert")
         data = self.data.read()
         count = 1
-        discharge_med_patttern = re.compile(r'(Discharge Orders[ \n]+Placed[ \n]+)([\w\Wn]*?\d+:\d+:+\d+)')
+        # Need two patterns to remove meds that were discontinued after order
+        discharge_med_patttern = re.compile(r'(Discharge Orders Placed)([\w\Wn]*?\n)')
+        discharge_discontinued_pat = re.compile(r'(Discharge Orders Discontinued)([\w\Wn]*?\n)')
 
         result_match = discharge_med_patttern.findall(data)
+        negative_match = discharge_discontinued_pat.findall(data)
+        negative_match = [group[1] for group in negative_match]
         if result_match is not None:
             for group in result_match:
-                meds_strings = group[1].split(";")
+                # Remove negative matches so you only match once
+                if group[1] in negative_match:
+                    negative_match.remove(group[1])
+                    continue
+                meds_strings = group[1].replace("(","").replace(")","").split()
                 for med in meds_strings:
-                    med_words = med.split()
-                    for word in med_words:
-                        if word in self.antibiotic_names or word in self.antiviral_names:
+                        if med in self.antibiotic_names or med in self.antiviral_names:
                             row_id = str(count)
                             field = 'name'
-                            value = word
+                            value = med
                             self.create_row(row_id)
                             self.update_row(field, value, row_id)
                             count += 1

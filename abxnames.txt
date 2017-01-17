@@ -1,20 +1,8 @@
-Class
 Lipopeptides
 Fluoroquinolone
 Lipoglycopeptides
 Cephalosporin
-(5th generation)
 Macrocyclics
-
-
-ß-Lactam Antibiotics
-
-Beta-lactam antibiotics include penicillins, cephalosporins, monobactams, and carbapenems.
-
-Penicillins
-
-
-Generic
 Amoxicillin
 Ampicillin
 Bacampicillin
@@ -25,22 +13,16 @@ Flucloxacillin
 Mezlocillin
 Nafcillin
 Oxacillin
+Penicillin
 Penicillin G
 Augmentin
 Amoxicillin-Clavulanate
-
-Penicillin V
+Penicillin
 Piperacillin
 Pivampicillin
 Pivmecillinam
 Ticarcillin
-
-
 Cephalosporins
-
-
-Generic
-First Generation
 Cefacetrile (cephacetrile)
 Cefadroxil (cefadroxyl)
 Cefalexin (cephalexin)
@@ -56,7 +38,6 @@ Cefazolin (cephazolin)
 Cefradine (cephradine)
 Cefroxadine
 Ceftezole
-Second Generation
 Cefaclor
 Cefamandole
 Cefmetazole
@@ -66,7 +47,6 @@ Cefoxitin
 Cefprozil (cefproxil)
 Cefuroxime
 Cefuzonam
-Third Generation
 Cefcapene
 Cefdaloxime
 Cefdinir
@@ -86,7 +66,6 @@ Ceftizoxime
 Ceftriaxone
 Cefoperazone
 Ceftazidime
-Fourth Generation
 Cefclidine
 Cefepime
 Cefluprenam
@@ -94,10 +73,8 @@ Cefoselis
 Cefozopran
 Cefpirome
 Cefquinome
-Fifth Generation
 Ceftobiprole
 Ceftaroline
-Not Classified
 Cefaclomezine
 Cefaloram
 Cefaparole
@@ -116,30 +93,12 @@ Cefuracetime
 Ceftioxide
 Combinations
 Ceftazidime/Avibactam
-
-
-Monobactams
-
-
-Generic
 Aztreonam
-
-
-Carbapenems
-
-
-Generic
-Imipenem,
+Imipenem
 Imipenem/cilastatin
 Doripenem
 Meropenem
 Ertapenem
-
-
-Macrolide Antibiotics
-
-
-Generic
 Azithromycin
 Erythromycin
 Clarithromycin
@@ -147,30 +106,12 @@ Dirithromycin
 Roxithromycin
 Ketolides
 Telithromycin
-
-
 Lincosamides
-
-
-Generic
 Clindamycin
 Lincomycin
-
-
-
-
-Streptogramins
-
-
-Generic
 Pristinamycin
 Quinupristin/dalfopristin
-
-
 Aminoglycoside Antibiotics
-
-
-Generic
 Amikacin
 Gentamicin
 Kanamycin
@@ -179,20 +120,12 @@ Netilmicin
 Paromomycin
 Streptomycin
 Tobramycin
-
-
-Quinolone Antibiotics
-
-
-Generic
-First Generation
 Flumequine
 Nalidixic acid
 Oxolinic acid
 Piromidic acid
 Pipemidic acid
 Rosoxacin
-Second Generation
 Ciprofloxacin
 Enoxacin
 Lomefloxacin
@@ -201,7 +134,6 @@ Norfloxacin
 Ofloxacin
 Pefloxacin
 Rufloxacin
-Third Generation
 Balofloxacin
 Gatifloxacin
 Grepafloxacin
@@ -211,29 +143,17 @@ Pazufloxacin
 Sparfloxacin
 Temafloxacin
 Tosufloxacin
-Fourth Generation
 Besifloxacin
 Clinafloxacin
 Gemifloxacin
 Sitafloxacin
 Trovafloxacin
 Prulifloxacin
-
-
-Sulfonamides
-
-
-Generic
+Ampicillin-sulbactam
 Sulfamethizole
 Sulfamethoxazole
 Sulfisoxazole
 Trimethoprim-Sulfamethoxazole
-
-
-Tetracycline Antibiotics
-
-
-Generic
 Demeclocycline
 Doxycycline
 Minocycline
@@ -241,12 +161,6 @@ Oxytetracycline
 Tetracycline
 Glycylcyclines
 Tigecycline
-
-
-Other Antibiotics
-
-
-Generic
 Chloramphenicol
 Metronidazole
 Tinidazole
@@ -258,7 +172,7 @@ Lipoglycopeptides
 Telavancin
 Oxazolidinones
 Linezolid
-Cycloserine 2
+Cycloserineï¿½2
 Rifamycins
 Rifampin
 Rifabutin
@@ -270,3 +184,171 @@ Polymyxin B
 Tuberactinomycins
 Viomycin
 Capreomycin
+
+
+Amikin
+Garamycin
+Kantrex
+Neo-Fradin
+Netromycin
+Nebcin
+Humatin
+Trobicin
+Xifaxan
+Lorabid
+Invanz
+Doribax
+Primaxin
+Merrem
+Duricef
+Ancef
+Keflin
+Keflex
+
+Distaclor
+Mandol
+Mefoxin
+Cefzil
+Ceftin
+Zinnat
+
+Cefspan (Fujisawa)
+Omnicef
+Cefdiel
+Spectracef
+Meiact
+Cefobid
+Claforan
+Vantin
+Fortaz
+Cedax
+Cefizox
+Rocephin
+Maxipime
+Teflaro
+Zeftera
+Targocid
+Vancocin
+Vibativ
+Dalvance
+Orbactiv
+Cleocin
+Lincocin
+Cubicin
+Zithromax
+Sumamed
+Xithrone
+Biaxin
+Dynabac
+Erythocin
+Erythroped
+Tao
+Ketek
+Rovamycine
+
+Azactam
+
+Furoxone
+Macrodantin,Macrobid
+
+Zyvox
+Sivextro
+
+Novamox
+Amoxil
+Principen
+
+Geocillin
+Tegopen
+Dynapen
+Floxapen
+Mezlin
+Staphcillin
+Unipen
+Prostaphlin
+Pentids
+Veetids (Pen-Vee-K)
+Pipracil
+Pfizerpen
+Negaban
+Ticar
+
+Augmentin
+Unasyn
+Zosyn
+Timentin
+
+
+Coly-Mycin-S
+
+
+Cipro
+Ciproxin
+Ciprobay
+Penetrex
+Tequin
+Factive
+Levaquin
+Maxaquin
+Avelox
+NegGram
+Noroxin
+Floxin
+Ocuflox
+Trovan
+Raxar
+Zagam
+Omniflox
+
+Sulfamylon
+Sulamyd
+Bleph-10
+Micro-Sulfon
+Silvadene
+Di-Methox
+Albon
+Thiosulfil Forte
+Gantanol
+
+Azulfidine
+Gantrisin
+Bactrim
+Septra
+Prontosil
+
+Declomycin
+Vibramycin
+Minocin
+Terramycin
+Sumycin
+Achromycin V
+Steclin
+
+Lamprene
+Avlosulfon
+Capastat
+Seromycin
+Myambutol
+Trecator
+I.N.H.
+Aldinamide
+Rifadin
+Rimactane
+Mycobutin
+Priftin
+
+
+Salvarsan
+Chloromycetin
+Monurol
+Monuril
+Fucidin
+Flagyl
+Bactroban
+
+Synercid
+
+Tigacyl
+Tindamax Fasigyn
+Proloprim
+Trimpex

@@ -1,5 +1,5 @@
 def getAbxNames():
-    with open(r'H:\timelinedata\abxnames.txt', 'r') as myfile:
+    with open('abxnames.txt', 'r') as myfile:
         myfile = list(myfile)
         towrite = []
         for line in myfile:
@@ -24,7 +24,7 @@ def getAntiviralNames():
         towrite = []
         for line in myfile:
             line = line.lower().replace("\n", "")
-            line = line.replace("(", "").replace(")", "").split(" ")
+            line = line.replace("(", "").replace(")", "").strip().split(" ")
             for item in line:
                 if item != "" and len(item) > 4:
                     towrite.append(item)
