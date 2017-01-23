@@ -1,5 +1,5 @@
 def getAbxNames():
-    with open('abxnames.txt', 'r') as myfile:
+    with open(r'H:\Pycharm Projects\pulltimeline\abxnames.txt', 'r') as myfile:
         myfile = list(myfile)
         towrite = []
         for line in myfile:
@@ -19,7 +19,7 @@ def getAbxNames():
 
 
 def getAntiviralNames():
-    with open('antiviralnames.txt', 'r') as myfile:
+    with open(r'H:\Pycharm Projects\pulltimeline\antiviralnames.txt', 'r') as myfile:
         myfile = list(myfile)
         towrite = []
         for line in myfile:
